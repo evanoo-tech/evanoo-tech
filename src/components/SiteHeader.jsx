@@ -21,7 +21,6 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/70 backdrop-blur-xl">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-
         {/* Logo */}
         <Link
           to="/"
@@ -42,6 +41,8 @@ export function SiteHeader() {
               <a
                 key={item.name}
                 href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground text-muted-foreground"
               >
                 {item.name}
@@ -61,18 +62,17 @@ export function SiteHeader() {
               >
                 {item.name}
               </NavLink>
-            )
+            ),
           )}
         </nav>
 
         {/* Right Side */}
         <div className="flex items-center gap-2">
-
           {/* Theme */}
           <button
             onClick={toggle}
             aria-label="Toggle Theme"
-            className="grid h-9 w-9 place-items-center rounded-md text-muted-foreground hover:bg-secondary hover:text-foreground"
+            className="grid h-9 w-9 place-items-center rounded-md text-muted-foreground hover:bg-secondary hover:text-foreground cursor-pointer"
           >
             {theme === "dark" ? (
               <Sun className="h-4 w-4" />
@@ -94,15 +94,10 @@ export function SiteHeader() {
           <button
             onClick={() => setOpen(!open)}
             aria-label="Menu"
-            className="grid h-9 w-9 place-items-center rounded-md lg:hidden hover:bg-secondary"
+            className="grid h-9 w-9 place-items-center rounded-md lg:hidden hover:bg-secondary cursor-pointer"
           >
-            {open ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-
         </div>
       </div>
 
@@ -110,12 +105,13 @@ export function SiteHeader() {
       {open && (
         <div className="border-t border-border/40 bg-background lg:hidden">
           <nav className="container mx-auto flex flex-col px-4 py-3">
-
             {nav.map((item) =>
               item.external ? (
                 <a
                   key={item.name}
                   href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
                   className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-foreground"
                 >
@@ -137,9 +133,8 @@ export function SiteHeader() {
                 >
                   {item.name}
                 </NavLink>
-              )
+              ),
             )}
-
           </nav>
         </div>
       )}
