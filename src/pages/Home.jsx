@@ -12,11 +12,12 @@ import {
   Star,
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-import apnaRasoiImg from "@/assets/apnaRasoiImg.png";
-import dashboard from "@/assets/portfolio-dashboard.jpg";
+// import apnaRasoiImg from "@/assets/apnaRasoiImg.png";
+// import dashboard from "@/assets/portfolio-dashboard.jpg";
 import ecommerce from "@/assets/portfolio-ecommerce.jpg";
 import { Button } from "@/components/ui/button";
-import { useMeta } from "../hooks/useMeta";
+// import { useMeta } from "../hooks/useMeta";
+import SEO from "@/components/SEO";
 import apnaRasoi from "@/assets/apna-rasoi.png";
 import eCommerce from "@/assets/e-commerce.png";
 import saadDashboard from "@/assets/saas-dashboard.png";
@@ -71,7 +72,7 @@ const projects = [
     desc: "Insurance platform with quotation, policy management, API integration, and claims workflow.",
     img: eCommerce,
     tech: ["Java", "Spring Boot", "REST API"],
-    link: "#",
+    link: "",
   },
   {
     title: "Evanoo Hosting Platform",
@@ -79,7 +80,7 @@ const projects = [
     desc: "Hosting platform offering shared hosting, VPS, domains, SSL certificates, and business email.",
     img: saadDashboard,
     tech: ["React", "Node.js", "Linux"],
-    link: "#",
+    link: "https://hosting.evanoo.in/",
   },
 ];
 
@@ -105,14 +106,20 @@ const testimonials = [
 ];
 
 export default function Home() {
-  useMeta({
-    title: "Evanoo — Hosting, Digital Services, SaaS & Finance",
-    description:
-      "Evanoo is one platform for hosting, digital services, SaaS products, and financial solutions — web & mobile development, cloud, CRM, loans, and credit cards.",
-  });
+  // useMeta({
+  //   title: "Evanoo — Hosting, Digital Services, SaaS & Finance",
+  //   description:
+  //     "Evanoo is one platform for hosting, digital services, SaaS products, and financial solutions — web & mobile development, cloud, CRM, loans, and credit cards.",
+  // });
 
   return (
     <>
+      <SEO
+        title={"Evanoo — Hosting, Digital Services, SaaS & Finance"}
+        description={
+          "Evanoo is one platform for hosting, digital services, SaaS products, and financial solutions — web & mobile development, cloud, CRM, loans, and credit cards."
+        }
+      />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div
@@ -195,10 +202,10 @@ export default function Home() {
             <div className="rounded-3xl border border-border bg-card p-8 shadow-elegant">
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  "Web & Mobile Apps",
-                  "Cloud Infrastructure",
-                  "Business Software",
-                  "24×7 Support",
+                  "24/7 Support",
+                  "99.9% Uptime",
+                  "Fast Delivery",
+                  "Secure Solutions",
                 ].map((p, i) => (
                   <div
                     key={p}
@@ -302,14 +309,20 @@ export default function Home() {
                 />
 
                 <div className="absolute inset-0 bg-black/60 opacity-0 transition duration-300 group-hover:opacity-100 flex items-center justify-center">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black transition hover:scale-105"
-                  >
-                    View Project
-                  </a>
+                  {project.link ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black transition hover:scale-105"
+                    >
+                      View Project
+                    </a>
+                  ) : (
+                    <div className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black transition hover:scale-105 cursor-default">
+                      Coming soon
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -336,14 +349,20 @@ export default function Home() {
                 </div>
 
                 <div className="mt-8">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-3"
-                  >
-                    Explore Project →
-                  </a>
+                  {project.link ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-3"
+                    >
+                      Explore Project →
+                    </a>
+                  ) : (
+                    <div className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-3 cursor-default">
+                      Coming soon →
+                    </div>
+                  )}
                 </div>
               </div>
             </article>
@@ -403,12 +422,7 @@ export default function Home() {
               </Link>
             </Button>
 
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-white/20 bg-background text-white hover:bg-white hover:text-black"
-            >
+            <Button asChild size="lg" variant="secondary">
               <a
                 href="https://wa.me/918083506050"
                 target="_blank"
