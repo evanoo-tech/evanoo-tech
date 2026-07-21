@@ -8,15 +8,9 @@ import {
   HeartHandshake,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-// import { useMeta } from "../hooks/useMeta";
 import SEO from "@/components/SEO";
 
 export default function About() {
-  // useMeta({
-  //   title: "About — Evanoo",
-  //   description: "Learn about Evanoo — one platform bringing together hosting, digital services, SaaS products, and financial solutions for businesses."
-  // });
-
   return (
     <>
       <SEO

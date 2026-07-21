@@ -4,7 +4,6 @@ import apnaRasoi from "@/assets/apna-rasoi.png";
 import saadDashboard from "@/assets/saas-dashboard.png";
 import ecommerce from "@/assets/e-commerce.png";
 import { Button } from "@/components/ui/button";
-// import { useMeta } from "../hooks/useMeta";
 import SEO from "@/components/SEO";
 
 const projects = [
@@ -43,12 +42,6 @@ const projects = [
 ];
 
 export default function Portfolio() {
-  // useMeta({
-  //   title: "Portfolio — Evanoo",
-  //   description:
-  //     "Selected projects by Evanoo including Apna Rasoi — a restaurant & cloud kitchen platform, SaaS dashboards, and e-commerce builds.",
-  // });
-
   return (
     <>
       <SEO

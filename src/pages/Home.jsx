@@ -16,7 +16,6 @@ import heroBg from "@/assets/hero-bg.jpg";
 // import dashboard from "@/assets/portfolio-dashboard.jpg";
 import ecommerce from "@/assets/portfolio-ecommerce.jpg";
 import { Button } from "@/components/ui/button";
-// import { useMeta } from "../hooks/useMeta";
 import SEO from "@/components/SEO";
 import apnaRasoi from "@/assets/apna-rasoi.png";
 import eCommerce from "@/assets/e-commerce.png";
@@ -106,12 +105,6 @@ const testimonials = [
 ];
 
 export default function Home() {
-  // useMeta({
-  //   title: "Evanoo — Hosting, Digital Services, SaaS & Finance",
-  //   description:
-  //     "Evanoo is one platform for hosting, digital services, SaaS products, and financial solutions — web & mobile development, cloud, CRM, loans, and credit cards.",
-  // });
-
   return (
     <>
       <SEO

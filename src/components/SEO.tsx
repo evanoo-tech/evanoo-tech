@@ -8,9 +8,10 @@ interface SEOProps {
     keywords?: string;
 }
 
-const SITE_NAME = "My Website";
+const SITE_URL = "https://evanoo.in";
+// const SITE_NAME = "My Website";
 // const DEFAULT_IMAGE = "/images/og-image.jpg";
-const DEFAULT_IMAGE = "logo.png";
+const DEFAULT_IMAGE = `${SITE_URL}/logo.png`;
 
 export default function SEO({
     title,
@@ -19,8 +20,7 @@ export default function SEO({
     url = window.location.href,
     keywords,
 }: SEOProps) {
-    const fullTitle = `${title} | ${SITE_NAME}`;
-    console.log(image)
+    const fullTitle = `${title} | ${SITE_URL}`;
     return (
         <Helmet>
             <title>{fullTitle}</title>

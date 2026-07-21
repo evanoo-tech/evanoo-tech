@@ -1,27 +1,69 @@
-import { Mail, MessageCircle, MapPin, Phone, Send } from "lucide-react";
-import { useState } from "react";
+import {
+  Mail,
+  MessageCircle,
+  MapPin,
+  Phone,
+  Send,
+  Loader2,
+} from "lucide-react";
+import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-// import { useMeta } from "../hooks/useMeta";
 import SEO from "@/components/SEO";
 
 export default function Contact() {
-  // useMeta({
-  //   title: "Contact Us | Evanoo Technologies",
-  //   description:
-  //     "Get in touch with Evanoo for website development, mobile apps, cloud hosting, SaaS platforms, AI solutions and enterprise software.",
-  // });
-
   const [submitting, setSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const clearError = (field) => {
+    setErrors((prev) => ({
+      ...prev,
+      [field]: undefined,
+    }));
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const values = {
+      name: formData.get("name")?.toString().trim() || "",
+      email: formData.get("email")?.toString().trim() || "",
+      subject: formData.get("subject")?.toString().trim() || "",
+      message: formData.get("message")?.toString().trim() || "",
+    };
+
+    const newErrors = {};
+
+    if (!values.name) {
+      newErrors.name = "Name is required";
+    }
+
+    if (!values.email) {
+      newErrors.email = "Email is required";
+    }
+
+    if (!values.message) {
+      newErrors.message = "Message is required";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) return;
+
+    // console.log(values); // All form values
+
     setSubmitting(true);
+
     setTimeout(() => {
       setSubmitting(false);
-      e.target.reset();
+      form.reset();
+      setErrors({});
+      // toast.success("Thanks! We'll get back to you within one business day.");
       toast.success("Thanks! We'll get back to you within one business day.");
     }, 700);
   };
@@ -66,10 +108,14 @@ export default function Contact() {
                 <Input
                   id="name"
                   name="name"
-                  required
                   placeholder="Your name"
-                  className="mt-2"
+                  onChange={() => clearError("name")}
+                  className={`mt-2 ${errors.name ? "border-red-500 focus-visible:ring-red-500" : ""}`}
                 />
+
+                {errors.name && (
+                  <p className="mt-1 text-xs text-red-500">{errors.name}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="email" className="text-sm font-medium">
@@ -77,12 +123,16 @@ export default function Contact() {
                 </label>
                 <Input
                   id="email"
-                  type="email"
                   name="email"
-                  required
+                  type="email"
                   placeholder="you@company.com"
-                  className="mt-2"
+                  onInput={() => clearError("email")}
+                  className={`mt-2 ${errors.email ? "border-red-500 focus-visible:ring-red-500" : ""}`}
                 />
+
+                {errors.email && (
+                  <p className="mt-1 text-xs text-red-500">{errors.email}</p>
+                )}
               </div>
             </div>
             <div className="mt-4">
@@ -92,7 +142,6 @@ export default function Contact() {
               <Input
                 id="subject"
                 name="subject"
-                required
                 placeholder="Project enquiry"
                 className="mt-2"
               />
@@ -104,11 +153,15 @@ export default function Contact() {
               <Textarea
                 id="message"
                 name="message"
-                required
                 rows={6}
                 placeholder="Tell us about your project, goals, and timeline."
-                className="mt-2"
+                onChange={() => clearError("message")}
+                className={`mt-2 ${errors.message ? "border-red-500 focus-visible:ring-red-500" : ""}`}
               />
+
+              {errors.message && (
+                <p className="mt-1 text-xs text-red-500">{errors.message}</p>
+              )}
             </div>
             <Button
               type="submit"
@@ -116,11 +169,13 @@ export default function Contact() {
               disabled={submitting}
               className="mt-6 gradient-hero text-primary-foreground border-0 shadow-elegant hover:opacity-90"
             >
-              {submitting ? (
-                "Sending..."
-              ) : (
+              {!submitting ? (
                 <>
                   Send message <Send className="ml-2 h-4 w-4" />
+                </>
+              ) : (
+                <>
+                  Sending... <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 </>
               )}
             </Button>

@@ -9,7 +9,6 @@ import {
   Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-// import { useMeta } from "../hooks/useMeta";
 import SEO from "@/components/SEO";
 
 const products = [
@@ -81,11 +80,6 @@ const faqs = [
 ];
 
 export default function Finance() {
-  // useMeta({
-  //   title: "Loans, Credit Cards & Insurance — Evanoo",
-  //   description: "Compare and apply for personal, business, and home loans, credit cards, and insurance through Evanoo's financial partners — quick approval and competitive rates."
-  // });
-
   return (
     <>
       <SEO
