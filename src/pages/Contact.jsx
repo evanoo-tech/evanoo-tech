@@ -5,6 +5,9 @@ import {
   Phone,
   Send,
   Loader2,
+  User,
+  MessageSquare,
+  Sparkles,
 } from "lucide-react";
 import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -76,219 +79,293 @@ export default function Contact() {
           "Get in touch with Evanoo for website development, mobile apps, cloud hosting, SaaS platforms, AI solutions and enterprise software."
         }
       />
-      <section className="container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-24">
-        <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-          Contact
-        </p>
-        <h1 className="mx-auto mt-3 max-w-3xl text-4xl font-bold sm:text-5xl lg:text-6xl">
-          Let's Build Your Next
-          <span className="gradient-text"> Digital Solution</span>
-        </h1>
-
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          Whether you need a website, mobile application, cloud hosting, SaaS
-          platform, AI solution, or custom software, our team is ready to help
-          bring your ideas to life.
-        </p>
-      </section>
-
-      <section className="container mx-auto px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-5">
-          {/* Form */}
-          <form
-            onSubmit={onSubmit}
-            className="rounded-3xl border border-border bg-card p-8 lg:col-span-3 shadow-elegant"
-          >
-            <h2 className="text-xl font-bold">Send us a message</h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div>
-                <label htmlFor="name" className="text-sm font-medium">
-                  Name
-                </label>
-                <Input
-                  id="name"
-                  name="name"
-                  placeholder="Your name"
-                  onChange={() => clearError("name")}
-                  className={`mt-2 ${errors.name ? "border-red-500 focus-visible:ring-red-500" : ""}`}
-                />
-
-                {errors.name && (
-                  <p className="mt-1 text-xs text-red-500">{errors.name}</p>
-                )}
-              </div>
-              <div>
-                <label htmlFor="email" className="text-sm font-medium">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="you@company.com"
-                  onInput={() => clearError("email")}
-                  className={`mt-2 ${errors.email ? "border-red-500 focus-visible:ring-red-500" : ""}`}
-                />
-
-                {errors.email && (
-                  <p className="mt-1 text-xs text-red-500">{errors.email}</p>
-                )}
-              </div>
-            </div>
-            <div className="mt-4">
-              <label htmlFor="subject" className="text-sm font-medium">
-                Subject
-              </label>
-              <Input
-                id="subject"
-                name="subject"
-                placeholder="Project enquiry"
-                className="mt-2"
-              />
-            </div>
-            <div className="mt-4">
-              <label htmlFor="message" className="text-sm font-medium">
-                Message
-              </label>
-              <Textarea
-                id="message"
-                name="message"
-                rows={6}
-                placeholder="Tell us about your project, goals, and timeline."
-                onChange={() => clearError("message")}
-                className={`mt-2 ${errors.message ? "border-red-500 focus-visible:ring-red-500" : ""}`}
-              />
-
-              {errors.message && (
-                <p className="mt-1 text-xs text-red-500">{errors.message}</p>
-              )}
-            </div>
-            <Button
-              type="submit"
-              size="lg"
-              disabled={submitting}
-              className="mt-6 gradient-hero text-primary-foreground border-0 shadow-elegant hover:opacity-90"
-            >
-              {!submitting ? (
-                <>
-                  Send message <Send className="ml-2 h-4 w-4" />
-                </>
-              ) : (
-                <>
-                  Sending... <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                </>
-              )}
-            </Button>
-          </form>
-
-          {/* Info */}
-          {/* Contact Information */}
-          <aside className="space-y-5 lg:col-span-2">
-            {/* Email */}
-            <a
-              href="mailto:contact@evanoo.in"
-              className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-elegant"
-            >
-              <div className="grid h-12 w-12 place-items-center rounded-xl gradient-hero text-primary-foreground">
-                <Mail className="h-5 w-5" />
-              </div>
-
-              <div>
-                <h3 className="font-semibold">Email</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  contact@evanoo.in
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  Response within one business day
-                </p>
-              </div>
-            </a>
-
-            {/* WhatsApp */}
-            <a
-              href="https://wa.me/919382451949?text=Hi%20Evanoo,%20I%20want%20to%20discuss%20my%20project."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-elegant"
-            >
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#25D366] text-white">
-                <MessageCircle className="h-5 w-5" />
-              </div>
-
-              <div>
-                <h3 className="font-semibold">WhatsApp</h3>
-                {/* <p className="mt-1 text-sm text-muted-foreground">
-        +91 93824 51949
-      </p> */}
-                <p className="text-xs text-muted-foreground">
-                  Quick support & project discussion
-                </p>
-              </div>
-            </a>
-
-            {/* Office */}
-            <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6">
-              <div className="grid h-12 w-12 place-items-center rounded-xl gradient-hero text-primary-foreground">
-                <MapPin className="h-5 w-5" />
-              </div>
-
-              <div>
-                <h3 className="font-semibold">Office</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Kolkata, West Bengal, India
-                </p>
-
-                <p className="text-xs text-muted-foreground">
-                  Serving clients across India & Worldwide
-                </p>
-              </div>
-            </div>
-
-            {/* Business Hours */}
-            <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6">
-              <div className="grid h-12 w-12 place-items-center rounded-xl gradient-hero text-primary-foreground">
-                <Phone className="h-5 w-5" />
-              </div>
-
-              <div>
-                <h3 className="font-semibold">Business Hours</h3>
-
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Monday – Friday
-                </p>
-
-                <p className="text-sm text-muted-foreground">
-                  10:00 AM – 7:00 PM IST
-                </p>
-              </div>
-            </div>
-          </aside>
-        </div>
-
-        {/* Map */}
-        <div className="mt-12 overflow-hidden rounded-3xl border border-border shadow-elegant">
-          <iframe
-            title="Evanoo location"
-            src="https://www.google.com/maps?q=Sector%20V,%20Kolkata,India&output=embed"
-            width="100%"
-            height="420"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="block w-full"
-          />
-        </div>
-      </section>
-
-      {/* Floating WhatsApp */}
-      <a
-        href="https://wa.me/918083506050?text=Hi%20Evanoo,%20I%20want%20to%20discuss%20my%20project."
-        target="_blank"
-        rel="noreferrer noopener"
-        aria-label="Chat on WhatsApp"
-        className="fixed bottom-6 right-6 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-elegant animate-float hover:scale-110 transition-transform"
+      {/* ---------- HERO : theme-adaptive contact section ---------- */}
+      <section
+        className="relative overflow-hidden bg-[var(--ink)] text-[var(--ink-foreground)]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, color-mix(in oklch, var(--ink-foreground) 9%, transparent) 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
+        }}
       >
-        <MessageCircle className="h-6 w-6" />
-      </a>
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
+
+        <div className="relative container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-24">
+          <div
+            className="mx-auto inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-xs tracking-tight text-[var(--ink-accent)]"
+            style={{
+              borderColor:
+                "color-mix(in oklch, var(--ink-foreground) 15%, transparent)",
+              backgroundColor:
+                "color-mix(in oklch, var(--ink-foreground) 5%, transparent)",
+            }}
+            data-aos="fade-down"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--ink-accent)] animate-pulse" />
+            $ evanoo --contact
+          </div>
+
+          <h1
+            className="mx-auto mt-6 max-w-3xl font-[Space_Grotesk,sans-serif] text-4xl font-semibold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl"
+            data-aos="fade-up"
+          >
+            Let's Build Your Next
+            <span className="block gradient-text!">Digital Solution</span>
+          </h1>
+
+          <p
+            className="mx-auto mt-6 max-w-2xl text-md"
+            style={{
+              color:
+                "color-mix(in oklch, var(--ink-foreground) 60%, transparent)",
+            }}
+            data-aos="fade-up"
+          >
+            Whether you need a website, mobile application, cloud hosting, SaaS
+            platform, AI solution, or custom software, our team is ready to help
+            bring your ideas to life.
+          </p>
+        </div>
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[var(--ink)]" />
+      </section>
+
+      <section className="container mx-auto px-4 pb-20 sm:px-6 lg:px-8 lg:py-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-5 lg:gap-12 items-stretch">
+            {/* Form */}
+            <form
+              onSubmit={onSubmit}
+              className="relative overflow-hidden rounded-lg border border-border bg-card/60 p-8 shadow backdrop-blur-xl sm:p-12 lg:col-span-3"
+            >
+              {/* Decorative gradient blur */}
+              <div className="absolute -left-1/2 -top-1/2 -z-10 h-[200%] w-[200%] rounded-full bg-primary/5 blur-[120px]" />
+
+              <div className="mb-10">
+                <h2 className="inline-flex items-center gap-2 text-3xl font-bold tracking-tight">
+                  <Sparkles className="h-6 w-6 text-primary" />
+                  Send us a message
+                </h2>
+                <p className="mt-3 text-muted-foreground">
+                  Fill out the form below and our team will get back to you
+                  within 24 hours.
+                </p>
+              </div>
+
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <label
+                    htmlFor="name"
+                    className="flex items-center gap-2 text-sm font-semibold text-foreground/90"
+                  >
+                    <User className="h-4 w-4 text-muted-foreground" />
+                    Full Name
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="John Doe"
+                    onChange={() => clearError("name")}
+                    className={`h-12 bg-background/50 transition-all focus:bg-background shadow-sm ${errors.name ? "border-red-500 focus-visible:ring-red-500" : "hover:border-primary/50"}`}
+                  />
+                  {errors.name && (
+                    <p className="mt-1 text-xs font-medium text-red-500">
+                      {errors.name}
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    htmlFor="email"
+                    className="flex items-center gap-2 text-sm font-semibold text-foreground/90"
+                  >
+                    <Mail className="h-4 w-4 text-muted-foreground" />
+                    Email Address
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="john@company.com"
+                    onInput={() => clearError("email")}
+                    className={`h-12 bg-background/50 transition-all focus:bg-background shadow-sm ${errors.email ? "border-red-500 focus-visible:ring-red-500" : "hover:border-primary/50"}`}
+                  />
+                  {errors.email && (
+                    <p className="mt-1 text-xs font-medium text-red-500">
+                      {errors.email}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-6 space-y-2">
+                <label
+                  htmlFor="subject"
+                  className="flex items-center gap-2 text-sm font-semibold text-foreground/90"
+                >
+                  <MessageSquare className="h-4 w-4 text-muted-foreground" />
+                  Subject
+                </label>
+                <Input
+                  id="subject"
+                  name="subject"
+                  placeholder="How can we help you?"
+                  className="h-12 bg-background/50 transition-all focus:bg-background shadow-sm hover:border-primary/50"
+                />
+              </div>
+
+              <div className="mt-6 space-y-2">
+                <label
+                  htmlFor="message"
+                  className="flex items-center gap-2 text-sm font-semibold text-foreground/90"
+                >
+                  <MessageCircle className="h-4 w-4 text-muted-foreground" />
+                  Message
+                </label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={6}
+                  placeholder="Tell us about your project, goals, and timeline..."
+                  onChange={() => clearError("message")}
+                  className={`resize-none bg-background/50 p-4 transition-all focus:bg-background shadow-sm ${errors.message ? "border-red-500 focus-visible:ring-red-500" : "hover:border-primary/50"}`}
+                />
+                {errors.message && (
+                  <p className="mt-1 text-xs font-medium text-red-500">
+                    {errors.message}
+                  </p>
+                )}
+              </div>
+
+              <Button
+                type="submit"
+                size="lg"
+                disabled={submitting}
+                className="group mt-8 w-full rounded-xl gradient-hero text-primary-foreground border-0 shadow-lg hover:shadow-xl hover:opacity-90 transition-all duration-300 sm:w-auto sm:px-8 h-12"
+              >
+                {!submitting ? (
+                  <>
+                    Send Message
+                    <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </>
+                ) : (
+                  <>
+                    Sending... <Loader2 className="ml-2 h-4 w-4 animate-spin" />
+                  </>
+                )}
+              </Button>
+            </form>
+
+            {/* Contact Information */}
+            <aside className="flex flex-col gap-6 lg:col-span-2">
+              <div className="rounded-lg border border-border bg-card/60 p-8 shadow backdrop-blur-xl h-full flex flex-col justify-center sm:p-10 relative overflow-hidden">
+                <div className="absolute right-0 top-0 -z-10 h-64 w-64 translate-x-1/3 -translate-y-1/3 rounded-full bg-primary/10 blur-[80px]" />
+
+                <h3 className="mb-2 text-2xl font-bold tracking-tight">
+                  Get in Touch
+                </h3>
+                <div className="mt-2 h-1 w-10 rounded-full bg-gradient-to-r from-cyan-500 to-orange-400 mb-8" />
+
+                <div className="space-y-8">
+                  {/* Email */}
+                  <a
+                    href="mailto:contact@evanoo.in"
+                    className="group flex items-start gap-5 transition-colors"
+                  >
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-md">
+                      <Mail className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">
+                        Email Us
+                      </p>
+                      <h4 className="mt-1 text-lg font-semibold text-foreground transition-colors group-hover:text-primary break-all">
+                        contact@evanoo.in
+                      </h4>
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        Response within 24 hours
+                      </p>
+                    </div>
+                  </a>
+
+                  {/* WhatsApp */}
+                  <a
+                    href="https://wa.me/919382451949?text=Hi%20Evanoo,%20I%20want%20to%20discuss%20my%20project."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-start gap-5 transition-colors"
+                  >
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#25D366]/10 text-[#25D366] transition-all duration-300 group-hover:bg-[#25D366] group-hover:text-white group-hover:shadow-md">
+                      <MessageCircle className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">
+                        WhatsApp
+                      </p>
+                      <h4 className="mt-1 text-lg font-semibold text-foreground transition-colors group-hover:text-[#25D366]">
+                        Quick Support
+                      </h4>
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        Project discussion & support
+                      </p>
+                    </div>
+                  </a>
+
+                  {/* Office */}
+                  <div className="flex items-start gap-5 group">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-md">
+                      <MapPin className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">
+                        Our Office
+                      </p>
+                      <h4 className="mt-1 text-lg font-semibold text-foreground">
+                        Kolkata, India
+                      </h4>
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        Serving clients worldwide
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Business Hours */}
+                  <div className="flex items-start gap-5 group">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-md">
+                      <Phone className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">
+                        Business Hours
+                      </p>
+                      <h4 className="mt-1 text-lg font-semibold text-foreground">
+                        Mon - Fri, 10am - 7pm IST
+                      </h4>
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        Weekend support for emergencies
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          {/* Map */}
+          <div className="mt-12 overflow-hidden rounded-lg border border-border shadow">
+            <iframe
+              title="Evanoo location"
+              src="https://www.google.com/maps?q=Sector%20V,%20Kolkata,India&output=embed"
+              width="100%"
+              height="420"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="block w-full"
+            />
+          </div>
+        </div>
+      </section>
     </>
   );
 }

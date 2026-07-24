@@ -63,22 +63,60 @@ const products = [
 export default function Saas() {
   return (
     <>
-      <section className="container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
-        <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-          SaaS Products
-        </p>
-        <h1 className="mx-auto mt-3 max-w-3xl text-4xl font-bold sm:text-5xl lg:text-6xl">
-          Software that{" "}
-          <span className="gradient-text">runs your business</span>
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          A growing suite of cloud-based products built by Evanoo — designed for
-          Indian businesses, ready for the world.
-        </p>
+      {/* ---------- HERO : theme-adaptive saas products section ---------- */}
+      <section
+        className="relative overflow-hidden bg-[var(--ink)] text-[var(--ink-foreground)]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, color-mix(in oklch, var(--ink-foreground) 9%, transparent) 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
+        }}
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
+
+        <div className="relative container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
+          <div
+            className="mx-auto inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-xs tracking-tight text-[var(--ink-accent)]"
+            style={{
+              borderColor:
+                "color-mix(in oklch, var(--ink-foreground) 15%, transparent)",
+              backgroundColor:
+                "color-mix(in oklch, var(--ink-foreground) 5%, transparent)",
+            }}
+            data-aos="fade-down"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--ink-accent)] animate-pulse" />
+            $ evanoo --saas --list
+          </div>
+
+          <h1
+            className="mx-auto mt-6 max-w-3xl font-[Space_Grotesk,sans-serif] text-4xl font-semibold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl"
+            data-aos="fade-up"
+          >
+            Software that{" "}
+            <span className="block gradient-text">
+              runs your business
+            </span>
+          </h1>
+
+          <p
+            className="mx-auto mt-6 max-w-2xl text-md"
+            style={{
+              color:
+                "color-mix(in oklch, var(--ink-foreground) 60%, transparent)",
+            }}
+            data-aos="fade-up"
+          >
+            A growing suite of cloud-based products built by Evanoo — designed
+            for Indian businesses, ready for the world.
+          </p>
+        </div>
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[var(--ink)]" />
       </section>
 
-      <section className="container mx-auto px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="grid gap-6 md:grid-cols-2">
+      <section className="container mx-auto px-4 pb-20 sm:px-6 lg:px-8 lg:py-20">
+        <div className="grid gap-6 md:grid-cols-4" data-aos="fade-up">
           {products.map(({ Icon, title, tag, desc, features }) => (
             <article
               key={title}
@@ -96,7 +134,7 @@ export default function Saas() {
                 </div>
               </div>
               <p className="mt-5 text-sm text-muted-foreground">{desc}</p>
-              <ul className="mt-5 grid grid-cols-2 gap-2 border-t border-border pt-5 text-sm">
+              <ul className="mt-5 flex flex-col gap-2 border-t border-border pt-5 text-sm">
                 {features.map((f) => (
                   <li key={f} className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-primary" /> {f}
@@ -105,7 +143,7 @@ export default function Saas() {
               </ul>
               <Button asChild variant="outline" className="mt-6">
                 <Link to="/contact">
-                  Request a demo <ArrowRight className="ml-2 h-4 w-4" />
+                  Request a demo <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
             </article>

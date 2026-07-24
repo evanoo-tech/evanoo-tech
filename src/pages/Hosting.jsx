@@ -91,22 +91,59 @@ const plans = [
 export default function Hosting() {
   return (
     <>
-      <section className="container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
-        <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-          Hosting
-        </p>
-        <h1 className="mx-auto mt-3 max-w-3xl text-4xl font-bold sm:text-5xl lg:text-6xl">
-          Powerful hosting,{" "}
-          <span className="gradient-text">simple pricing</span>
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          From your first domain to enterprise infrastructure — Evanoo keeps
-          your sites fast, secure, and online.
-        </p>
+      {/* ---------- HERO : theme-adaptive hosting section ---------- */}
+      <section
+        className="relative overflow-hidden bg-[var(--ink)] text-[var(--ink-foreground)]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, color-mix(in oklch, var(--ink-foreground) 9%, transparent) 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
+        }}
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
+
+        <div className="relative container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
+          <div
+            className="mx-auto inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-xs tracking-tight text-[var(--ink-accent)]"
+            style={{
+              borderColor:
+                "color-mix(in oklch, var(--ink-foreground) 15%, transparent)",
+              backgroundColor:
+                "color-mix(in oklch, var(--ink-foreground) 5%, transparent)",
+            }}
+            data-aos="fade-down"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--ink-accent)] animate-pulse" />
+            $ evanoo --hosting
+          </div>
+
+          <h1
+            className="mx-auto mt-6 max-w-3xl font-[Space_Grotesk,sans-serif] text-4xl font-semibold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl"
+            data-aos="fade-up"
+          >
+            Powerful hosting,{" "}
+            <span className="block gradient-text">simple pricing</span>
+          </h1>
+
+          <p
+            className="mx-auto mt-6 max-w-2xl text-md"
+            style={{
+              color:
+                "color-mix(in oklch, var(--ink-foreground) 60%, transparent)",
+            }}
+            data-aos="fade-up"
+          >
+            From your first domain to enterprise infrastructure — Evanoo keeps
+            your sites fast, secure, and online.
+          </p>
+        </div>
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[var(--ink)]" />
       </section>
 
-      <section className="container mx-auto px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Content section */}
+      <section className="container mx-auto px-4 pb-16 sm:px-6 lg:px-8 lg:py-20 lg:pb-10">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-down">
           {offerings.map(({ Icon, title, desc }) => (
             <div
               key={title}
@@ -122,57 +159,92 @@ export default function Hosting() {
         </div>
       </section>
 
-      <section className="border-y border-border/40 bg-card/30">
-        <div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-background py-10 sm:py-28 lg:pt-10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background"></div>
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-              Pricing
-            </p>
-            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+              Simple Pricing
+            </span>
+            <h2 className="mt-4 text-2xl font-bold tracking-tight sm:text-5xl">
               Plans for every stage
             </h2>
+            <p className="mt-4 text-md text-muted-foreground">
+              Choose the perfect hosting plan for your needs. Upgrade or
+              downgrade at any time.
+            </p>
           </div>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {plans.map((p) => (
+
+          <div className="mx-auto mt-16 grid max-w-5xl gap-8 lg:grid-cols-3 lg:gap-6 items-center">
+            {plans.map((p, i) => (
               <div
                 key={p.name}
-                className={`relative rounded-2xl border bg-card p-8 transition-all ${
+                className={`relative flex flex-col rounded-3xl border bg-card p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-2 ${
                   p.popular
-                    ? "border-primary shadow-elegant"
-                    : "border-border hover:border-primary/40"
+                    ? "border-primary/50 shadow-xl ring-1 ring-primary/20 lg:scale-105 z-10 bg-gradient-to-b from-card to-primary/5 transition-all"
+                    : "border-border/50 hover:border-primary/30"
                 }`}
               >
                 {p.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full gradient-hero px-3 py-1 text-xs font-semibold text-primary-foreground">
-                    Most Popular
-                  </span>
+                  <div className="absolute -top-4 left-0 right-0 flex justify-center">
+                    <span className="flex items-center gap-1 rounded-full bg-primary px-4 py-1 text-xs font-semibold uppercase tracking-widest text-primary-foreground shadow-sm">
+                      ✨ Most Popular
+                    </span>
+                  </div>
                 )}
-                <h3 className="text-lg font-bold">{p.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
-                <div className="mt-5 flex items-baseline gap-1">
-                  <span className="text-4xl font-bold gradient-text">
+
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold text-foreground">
+                    {p.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground min-h-[40px]">
+                    {p.desc}
+                  </p>
+                </div>
+
+                <div className="mb-6 flex items-end gap-1">
+                  <span className="text-5xl font-extrabold tracking-tight">
                     {p.price}
                   </span>
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-sm font-medium text-muted-foreground mb-1">
                     {p.period}
                   </span>
                 </div>
-                <ul className="mt-6 space-y-2.5 border-t border-border pt-5 text-sm">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-primary" /> {f}
-                    </li>
-                  ))}
-                </ul>
+
                 <Button
                   asChild
-                  className={`mt-7 w-full ${p.popular ? "gradient-hero text-primary-foreground border-0 hover:opacity-90" : ""}`}
-                  variant={p.popular ? "default" : "outline"}
+                  size="lg"
+                  className={`group w-full mb-8 rounded-lg font-semibold transition-all ${
+                    p.popular
+                      ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg"
+                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  }`}
                 >
-                  <Link to="/contact">
-                    Get started <ArrowRight className="ml-2 h-4 w-4" />
+                  <Link
+                    to="/contact"
+                    className="flex items-center justify-center"
+                  >
+                    Get started{" "}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Button>
+
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-foreground mb-4">
+                    What's included:
+                  </p>
+                  <ul className="space-y-3 text-sm text-muted-foreground">
+                    {p.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3">
+                        <div className="mt-0.5 rounded-full bg-primary/10 p-1">
+                          <Check className="h-3 w-3 text-primary stroke-[3]" />
+                        </div>
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>

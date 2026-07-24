@@ -10,6 +10,8 @@ import {
   Boxes,
   Quote,
   Star,
+  FolderKanban,
+  Headset, ShieldCheck, Zap, Lock, TrendingUp
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 // import apnaRasoiImg from "@/assets/apnaRasoiImg.png";
@@ -20,6 +22,10 @@ import SEO from "@/components/SEO";
 import apnaRasoi from "@/assets/apna-rasoi.png";
 import eCommerce from "@/assets/e-commerce.png";
 import saadDashboard from "@/assets/saas-dashboard.png";
+
+import Portfolio from "@/components/Portfolio";
+import Cta from "@/components/Cta";
+import React, { useEffect } from "react";
 
 const services = [
   {
@@ -105,6 +111,7 @@ const testimonials = [
 ];
 
 export default function Home() {
+
   return (
     <>
       <SEO
@@ -125,23 +132,25 @@ export default function Home() {
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" />
 
-        <div className="container mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-36">
+        <div className="container mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-26" >
           <div className="mx-auto max-w-3xl text-center animate-fade-up">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur"
+            data-aos="fade-down">
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
               Now taking new projects for 2026
             </span>
-            <h1 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="mt-6 font-display text-4xl font-bold tracking-tight lg:leading-19 sm:text-6xl lg:text-7xl"
+            data-aos="fade-up">
               Building <span className="gradient-text">Digital Products</span>{" "}
               That Power Modern Businesses
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+            <p className="mx-auto mt-6 max-w-2xl text-md text-muted-foreground" data-aos="fade-up">
               From websites and mobile apps to SaaS platforms, cloud hosting,
               and AI-powered solutions—Evanoo helps businesses launch, scale,
               and grow.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3" data-aos="fade-up">
               <Button
                 asChild
                 size="lg"
@@ -152,7 +161,10 @@ export default function Home() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/portfolio">View Portfolio</Link>
+                <Link to="/portfolio">
+                  <FolderKanban className="ml-2 h-4 w-4" />
+                  View Portfolio
+                </Link>
               </Button>
             </div>
           </div>
@@ -160,14 +172,18 @@ export default function Home() {
       </section>
 
       {/* Overview */}
-      <section className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
+      {/* <section className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary pb-2">
               WHY EVANOO
             </p>
+            <div class="w-10 h-1 rounded-full gradient-hero mt-1 mb-4"></div>
             <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-              Building Technology That Helps Businesses Grow.
+              Building Technology That Helps<br/>
+              <span className="bg-gradient-to-r from-cyan-500 via-sky-500 to-orange-400 bg-clip-text text-transparent">
+                Businesses Grow
+              </span>
             </h2>
             <p className="mt-5 text-muted-foreground">
               Evanoo helps startups, entrepreneurs, and growing businesses build
@@ -214,154 +230,163 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section> */}
+
+      <section className="container mx-auto px-4 py-20 sm:px-6 lg:px-8" data-aos="fade-up">
+        <div className="grid items-center gap-14 lg:grid-cols-2">
+          {/* LEFT COLUMN */}
+          <div>
+            <div className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
+              <TrendingUp className="h-4 w-4" />
+              Why Evanoo
+            </div>
+            <div className="mt-2 h-1 w-10 rounded-full bg-gradient-to-r from-cyan-500 to-orange-400" />
+
+            <h2 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl lg:text-[2.75rem]">
+              Building Technology That Helps
+              <br />
+              <span className="gradient-text">Businesses Grow</span>
+            </h2>
+
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              Evanoo helps startups, entrepreneurs, and growing businesses build
+              modern digital solutions. From websites and mobile apps to cloud
+              hosting, SaaS platforms, AI automation, and custom software—we
+              provide everything needed to launch, scale, and succeed.
+            </p>
+
+            <div className="mt-6 grid grid-cols-3 gap-4">
+              {[
+                { n: "10+", l: "Projects shipped" },
+                { n: "100%", l: "Client-focused" },
+                { n: "24/7", l: "Support" },
+              ].map((s) => (
+                <div key={s.l}>
+                  <div className="text-3xl font-bold gradient-text">{s.n}</div>
+                  <div className="mt-1 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                    {s.l}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN */}
+          <div className="relative">
+            <div className="absolute -inset-6 -z-10 rounded-3xl gradient-hero opacity-20 blur-3xl" />
+            <div>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  {
+                    icon: Headset,
+                    title: "24/7 Support",
+                    desc: "Always here to help",
+                  },
+                  {
+                    icon: ShieldCheck,
+                    title: "99.9% Uptime",
+                    desc: "Reliable infrastructure",
+                  },
+                  {
+                    icon: Zap,
+                    title: "Fast Delivery",
+                    desc: "On-time, every time",
+                  },
+                  {
+                    icon: Lock,
+                    title: "Secure Solutions",
+                    desc: "Built with security first",
+                  },
+                ].map(({ icon: Icon, title, desc }) => (
+                  <div data-aos="flip-left"
+                    key={title}
+                    className="group rounded-2xl border border-border bg-card/50 p-5 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
+                  >
+                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500/10 to-orange-400/10 text-primary transition-colors group-hover:from-cyan-500/20 group-hover:to-orange-400/20">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="font-semibold">{title}</div>
+                    <div className="mt-1 text-xs text-muted-foreground">
+                      {desc}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Services */}
-      <section className="border-y border-border/40 bg-card/30">
-        <div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden border-y border-border/40 bg-card/10" data-aos="fade-up">
+        <div className="pointer-events-none absolute right-0 top-10 -z-10 h-[450px] w-[450px] rounded-full bg-orange-400 opacity-15 blur-3xl" />
+        <div className="pointer-events-none absolute left-0 bottom-0 -z-10 h-[350px] w-[350px] rounded-full bg-sky-400 opacity-15 blur-3xl" />
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.025]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
+            backgroundSize: "36px 36px",
+          }}
+        />
+        <div className="container relative mx-auto px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-wider text-primary">
               What we do
             </p>
+            <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-gradient-to-r from-cyan-500 to-orange-400" />
             <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
               Technology Solutions for Every Stage of Your Business
             </h2>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map(({ Icon, title, desc, link, external }) => (
-              <div
-                key={title}
-                onClick={() => {
-                  if (!link) return;
 
-                  if (external) {
-                    window.location.href = link;
-                  } else {
-                    window.location.href = link;
-                  }
-                }}
-                className="group cursor-pointer rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-elegant"
-              >
-                {" "}
-                <div className="grid h-12 w-12 place-items-center rounded-xl gradient-hero text-primary-foreground">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <h3 className="mt-5 text-lg font-semibold">{title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
-              </div>
-            ))}
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-aos="flip-up" data-aos-duration="1000">
+            {services.map(({ Icon, title, desc, link, external }) => {
+              const CardInner = (
+                <>
+                  <div className="flex items-start justify-between">
+                    <div className="grid h-12 w-12 place-items-center rounded-xl gradient-hero text-primary-foreground shadow-sm transition-transform duration-300 group-hover:scale-110">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <ArrowRight className="h-4 w-4 -translate-x-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-primary group-hover:opacity-100" />
+                  </div>
+                  <h3 className="mt-5 text-lg font-semibold">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {desc}
+                  </p>
+                </>
+              );
+
+              const cardClass =
+                "group relative block h-full rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-elegant focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50";
+
+              return external ? (
+                <a key={title} href={link} className={cardClass}>
+                  {CardInner}
+                </a>
+              ) : (
+                <Link key={title} to={link || "#"} className={cardClass}>
+                  {CardInner}
+                </Link>
+              );
+            })}
           </div>
-          <div className="mt-10 text-center">
+
+          <div className="mt-12 text-center">
             <Button asChild variant="outline">
               <Link to="/services">
-                All services <ArrowRight className="ml-2 h-4 w-4" />
+                All services
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Portfolio highlights */}
       {/* Portfolio */}
-      <section className="container mx-auto px-4 py-24 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-              OUR PORTFOLIO
-            </p>
-
-            <h2 className="mt-3 text-4xl font-bold tracking-tight">
-              Digital Solutions We've Built
-            </h2>
-
-            <p className="mt-5 text-lg text-muted-foreground">
-              Explore some of our recent projects across web development,
-              enterprise software, cloud hosting, and modern business solutions.
-            </p>
-          </div>
-
-          <Link
-            to="/portfolio"
-            className="text-primary font-semibold hover:underline"
-          >
-            View All Projects →
-          </Link>
-        </div>
-
-        <div className="mt-14 grid gap-8 lg:grid-cols-3">
-          {projects.map((project) => (
-            <article
-              key={project.title}
-              className="group overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-[0_20px_60px_rgba(0,255,255,0.12)]"
-            >
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="w-full object-cover transition duration-700 group-hover:scale-105"
-                />
-
-                <div className="absolute inset-0 bg-black/60 opacity-0 transition duration-300 group-hover:opacity-100 flex items-center justify-center">
-                  {project.link ? (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black transition hover:scale-105"
-                    >
-                      View Project
-                    </a>
-                  ) : (
-                    <div className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black transition hover:scale-105 cursor-default">
-                      Coming soon
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="p-7">
-                <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-                  {project.tag}
-                </span>
-
-                <h3 className="mt-3 text-2xl font-bold">{project.title}</h3>
-
-                <p className="mt-3 text-muted-foreground leading-7">
-                  {project.desc}
-                </p>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-8">
-                  {project.link ? (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-3"
-                    >
-                      Explore Project →
-                    </a>
-                  ) : (
-                    <div className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-3 cursor-default">
-                      Coming soon →
-                    </div>
-                  )}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <div data-aos="fade-up">
+        <Portfolio />
+      </div>
 
       {/* Testimonials */}
       {/* <section className="border-y border-border/40 bg-card/30">
@@ -393,7 +418,10 @@ export default function Home() {
       </section> */}
 
       {/* Contact CTA */}
-      <section className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
+      <div data-aos="fade-up">
+        <Cta/>
+      </div>
+      {/* <section className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-border gradient-hero p-10 text-center text-primary-foreground sm:p-16 shadow-elegant">
           <Wrench className="mx-auto h-10 w-10 opacity-80" />
           <h2 className="mt-5 text-3xl font-bold sm:text-4xl">
@@ -426,7 +454,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

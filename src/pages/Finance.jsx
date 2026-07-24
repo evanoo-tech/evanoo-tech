@@ -88,72 +88,132 @@ export default function Finance() {
           "Compare and apply for personal, business, and home loans, credit cards, and insurance through Evanoo's financial partners — quick approval and competitive rates."
         }
       />
-      <section className="container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
-        <p className="text-sm font-semibold uppercase tracking-wider text-primary">
-          Finance
-        </p>
-        <h1 className="mx-auto mt-3 max-w-3xl text-4xl font-bold sm:text-5xl lg:text-6xl">
-          Loans, cards & insurance{" "}
-          <span className="gradient-text">made simple</span>
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-          Compare offers from leading banks and NBFCs, apply online in minutes,
-          and get approved fast.
-        </p>
-      </section>
+      {/* ---------- HERO : theme-adaptive finance section ---------- */}
+      <section
+        className="relative overflow-hidden bg-[var(--ink)] text-[var(--ink-foreground)]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, color-mix(in oklch, var(--ink-foreground) 9%, transparent) 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
+        }}
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
 
-      <section className="container mx-auto px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {products.map(({ Icon, title, desc, points }) => (
+        <div className="relative container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
+          <div
+            className="mx-auto inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-xs tracking-tight text-[var(--ink-accent)]"
+            style={{
+              borderColor:
+                "color-mix(in oklch, var(--ink-foreground) 15%, transparent)",
+              backgroundColor:
+                "color-mix(in oklch, var(--ink-foreground) 5%, transparent)",
+            }}
+            data-aos="fade-down"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--ink-accent)] animate-pulse" />
+            $ evanoo --finance
+          </div>
+
+          <h1
+            className="mx-auto mt-6 max-w-3xl font-[Space_Grotesk,sans-serif] text-4xl font-semibold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl"
+            data-aos="fade-up"
+          >
+            Loans, cards &amp; insurance{" "}
+            <span className="block gradient-text">
+              made simple
+            </span>
+          </h1>
+
+          <p
+            className="mx-auto mt-6 max-w-2xl text-md"
+            style={{
+              color:
+                "color-mix(in oklch, var(--ink-foreground) 60%, transparent)",
+            }}
+            data-aos="fade-up"
+          >
+            Compare offers from leading banks and NBFCs, apply online in
+            minutes, and get approved fast.
+          </p>
+        </div>
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[var(--ink)]" />
+      </section>
+      {/* Content Area */}
+      <section className="container mx-auto px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-28 lg:pt-16">
+        <div className="mb-12 text-center" data-aos="fade-up">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+            Financial solutions for every need
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Discover the right financial products tailored to your goals. Compare, choose, and apply seamlessly.
+          </p>
+        </div>
+        
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-aos="fade-up">
+          {products.map(({ Icon, title, desc, points }, i) => (
             <article
               key={title}
-              className="rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-elegant"
+              className="group relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-card p-8 transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
             >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              
               <div className="grid h-12 w-12 place-items-center rounded-xl gradient-hero text-primary-foreground">
                 <Icon className="h-6 w-6" />
               </div>
-              <h2 className="mt-5 text-lg font-semibold">{title}</h2>
-              <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
-              <ul className="mt-5 space-y-2 border-t border-border pt-4 text-sm">
+              
+              <h2 className="relative z-10 mt-6 text-xl font-bold transition-colors group-hover:text-primary">{title}</h2>
+              <p className="relative z-10 mt-3 text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
+              
+              <ul className="relative z-10 mt-6 space-y-3 border-t border-border/50 pt-6 text-sm text-muted-foreground">
                 {points.map((p) => (
-                  <li key={p} className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary" /> {p}
+                  <li key={p} className="flex items-start gap-3">
+                    <div className="mt-0.5 rounded-full bg-primary/10 p-1">
+                      <Check className="h-3 w-3 text-primary stroke-[3]" />
+                    </div>
+                    <span>{p}</span>
                   </li>
                 ))}
               </ul>
-              <Button asChild variant="outline" className="mt-6 w-full">
-                <Link to="/contact">
-                  Apply now <ArrowRight className="ml-2 h-4 w-4" />
+              <Button asChild variant="outline" className="mt-8 max-w-[130px]">
+                <Link to="/contact" className="flex items-center justify-center">
+                  Apply now <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
             </article>
           ))}
         </div>
       </section>
-
-      <section className="border-t border-border/40 bg-card/30">
-        <div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+      {/* FAQ Section */}
+      <section className="relative overflow-hidden border-t border-border/40 bg-card/30">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-primary/5 via-background to-background"></div>
+        <div className="container relative mx-auto px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center" data-aos="fade-up">
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-3">
               FAQ
-            </p>
-            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+            </span>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Frequently asked questions
             </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Everything you need to know about our financial products and services.
+            </p>
           </div>
-          <div className="mx-auto mt-10 max-w-3xl space-y-4">
-            {faqs.map((f) => (
+          <div className="mx-auto mt-16 max-w-3xl space-y-4">
+            {faqs.map((f, i) => (
               <details
                 key={f.q}
-                className="group rounded-2xl border border-border bg-card p-6 [&_summary::-webkit-details-marker]:hidden"
+                className="group rounded-2xl border border-border/50 bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-card hover:shadow-md [&_summary::-webkit-details-marker]:hidden"
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
               >
-                <summary className="flex cursor-pointer items-center justify-between gap-4 text-base font-semibold">
+                <summary className="flex cursor-pointer items-center justify-between gap-4 text-lg font-semibold transition-colors group-hover:text-primary">
                   {f.q}
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-border text-sm transition-transform group-open:rotate-45">
-                    +
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary/10 text-primary transition-transform duration-300 group-open:rotate-45 group-open:bg-primary group-open:text-primary-foreground">
+                    <span className="text-xl leading-none -mt-0.5">+</span>
                   </span>
                 </summary>
-                <p className="mt-4 text-sm text-muted-foreground">{f.a}</p>
+                <p className="mt-4 text-base text-muted-foreground leading-relaxed pr-8">{f.a}</p>
               </details>
             ))}
           </div>

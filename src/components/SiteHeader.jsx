@@ -1,17 +1,17 @@
 import { Link, NavLink } from "react-router-dom";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Moon, Sun, X, House, BriefcaseBusiness, ServerCog, FolderKanban, CircleUserRound, Phone } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "./theme-provider";
 import { Button } from "./ui/button";
 import logo from "@/assets/logo.png";
 
 const nav = [
-  { name: "Home", href: "/", external: false },
-  { name: "Services", href: "/services", external: false },
-  { name: "Hosting", href: "https://hosting.evanoo.in", external: true },
-  { name: "Portfolio", href: "/portfolio", external: false },
-  { name: "About", href: "/about", external: false },
-  { name: "Contact", href: "/contact", external: false },
+  { name: "Home", href: "/", icon: House, external: false },
+  { name: "Services", href: "/services", icon: BriefcaseBusiness, external: false },
+  { name: "Hosting", href: "https://hosting.evanoo.in", icon: ServerCog, external: true },
+  { name: "Portfolio", href: "/portfolio", icon: FolderKanban, external: false },
+  { name: "About", href: "/about", icon: CircleUserRound, external: false },
+  { name: "Contact", href: "/contact", icon: Phone, external: false },
 ];
 
 export function SiteHeader() {
@@ -36,15 +36,17 @@ export function SiteHeader() {
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-1 lg:flex">
-          {nav.map((item) =>
-            item.external ? (
+          {nav.map((item) =>{
+            const Icon = item.icon;
+            return item.external ? (
               <a
                 key={item.name}
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground text-muted-foreground"
+                className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground text-muted-foreground"
               >
+                <Icon className="h-4 w-4" />
                 {item.name}
               </a>
             ) : (
@@ -53,17 +55,26 @@ export function SiteHeader() {
                 to={item.href}
                 end={item.href === "/"}
                 className={({ isActive }) =>
-                  `rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground ${
+                  `flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground ${
                     isActive
                       ? "bg-secondary text-foreground"
                       : "text-muted-foreground"
                   }`
                 }
               >
-                {item.name}
+                {({ isActive }) => (
+                  <>
+                    <Icon
+                      className={`h-4 w-4 ${
+                        isActive ? "text-primary" : "text-muted-foreground"
+                      }`}
+                    />
+                    {item.name}
+                  </>
+                )}
               </NavLink>
-            ),
-          )}
+            );
+          })}
         </nav>
 
         {/* Right Side */}
