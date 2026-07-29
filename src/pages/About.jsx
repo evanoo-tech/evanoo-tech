@@ -6,7 +6,7 @@ import {
   Users,
   Rocket,
   HeartHandshake,
-  BriefcaseBusiness
+  BriefcaseBusiness,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
@@ -64,10 +64,10 @@ export default function About() {
 
       {/* ---------- HERO : theme-adaptive ink section ---------- */}
       <section
-        className="relative overflow-hidden bg-[var(--ink)] text-[var(--ink-foreground)]"
+        className="relative overflow-hidden bg-background text-foreground"
         style={{
           backgroundImage:
-            "radial-gradient(circle, color-mix(in oklch, var(--ink-foreground) 9%, transparent) 1px, transparent 1px)",
+            "radial-gradient(circle, color-mix(in oklch, var(--foreground) 9%, transparent) 1px, transparent 1px)",
           backgroundSize: "26px 26px",
         }}
       >
@@ -75,33 +75,23 @@ export default function About() {
 
         <div className="relative container mx-auto px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-25">
           <div
-            className="mx-auto inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-xs tracking-tight text-[var(--ink-accent)]"
-            style={{
-              borderColor:
-                "color-mix(in oklch, var(--ink-foreground) 15%, transparent)",
-              backgroundColor:
-                "color-mix(in oklch, var(--ink-foreground) 5%, transparent)",
-            }}
+            className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 font-mono text-xs tracking-tight text-primary"
             data-aos="fade-down"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--ink-accent)] animate-pulse" />
+            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             $ evanoo --about
           </div>
 
-          <h1 className="mx-auto mt-6 max-w-3xl font-[Space_Grotesk,sans-serif] text-4xl font-semibold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl"
-          data-aos="fade-up">
+          <h1
+            className="mx-auto mt-6 max-w-3xl font-[Space_Grotesk,sans-serif] text-4xl font-semibold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl"
+            data-aos="fade-up"
+          >
             A small team with
-            <span className="block gradient-text">
-              big ambitions
-            </span>
+            <span className="block gradient-text">big ambitions</span>
           </h1>
 
           <p
-            className="mx-auto mt-6 max-w-2xl text-md"
-            style={{
-              color:
-                "color-mix(in oklch, var(--ink-foreground) 60%, transparent)",
-            }}
+            className="mx-auto mt-6 max-w-2xl text-md text-muted-foreground"
             data-aos="fade-up"
           >
             We partner with founders, product teams, and enterprises to design
@@ -109,7 +99,7 @@ export default function About() {
           </p>
         </div>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[var(--ink)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background" />
       </section>
 
       {/* ---------- STORY + MISSION/VISION : light paper section ---------- */}
@@ -117,8 +107,10 @@ export default function About() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-2">
             {/* story card */}
-            <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_2px_rgba(11,18,32,0.04)]"
-            data-aos="fade-up">
+            <div
+              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_2px_rgba(11,18,32,0.04)]"
+              data-aos="fade-up"
+            >
               <div className="flex items-center gap-3 border-b border-border bg-card px-4 py-2.5">
                 <div className="flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-[#F5A623]/70" />
@@ -129,7 +121,7 @@ export default function About() {
                   about/story.md
                 </span>
               </div>
-              <div className="flex-1 p-8" >
+              <div className="flex-1 p-8">
                 <h2 className="font-[Space_Grotesk,sans-serif] text-2xl font-semibold text-black dark:text-white">
                   Our Story
                 </h2>
@@ -150,7 +142,10 @@ export default function About() {
 
             {/* mission / vision */}
             <div className="grid gap-6">
-              <div className="rounded-2xl border border-border bg-card p-8 shadow-[0_1px_2px_rgba(11,18,32,0.04)]" data-aos="flip-up">
+              <div
+                className="rounded-2xl border border-border bg-card p-8 shadow-[0_1px_2px_rgba(11,18,32,0.04)]"
+                data-aos="flip-up"
+              >
                 <div className="flex items-center justify-between">
                   <div className="grid h-11 w-11 place-items-center rounded-lg gradient-hero text-white">
                     <Target className="h-5 w-5" />
@@ -168,7 +163,10 @@ export default function About() {
                   and delighted users.
                 </p>
               </div>
-              <div className="rounded-2xl border border-border bg-card p-8 shadow-[0_1px_2px_rgba(11,18,32,0.04)]" data-aos="flip-up">
+              <div
+                className="rounded-2xl border border-border bg-card p-8 shadow-[0_1px_2px_rgba(11,18,32,0.04)]"
+                data-aos="flip-up"
+              >
                 <div className="flex items-center justify-between">
                   <div className="grid h-11 w-11 place-items-center rounded-lg gradient-hero text-white">
                     <Eye className="h-5 w-5" />
@@ -193,10 +191,10 @@ export default function About() {
 
       {/* ---------- WHY CHOOSE US + CTA : theme-adaptive ink bookend ---------- */}
       <section
-        className="relative overflow-hidden bg-[var(--ink)] text-[var(--ink-foreground)]"
+        className="relative overflow-hidden bg-background text-foreground"
         style={{
           backgroundImage:
-            "radial-gradient(circle, color-mix(in oklch, var(--ink-foreground) 9%, transparent) 1px, transparent 1px)",
+            "radial-gradient(circle, color-mix(in oklch, var(--foreground) 9%, transparent) 1px, transparent 1px)",
           backgroundSize: "26px 26px",
         }}
       >
@@ -204,10 +202,16 @@ export default function About() {
 
         <div className="relative container mx-auto px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-2xl text-center">
-            <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-[color-mix(in_oklch,var(--ink-foreground)_15%,transparent)] bg-[color-mix(in_oklch,var(--ink-foreground)_5%,transparent)] px-4 py-1.5 font-mono text-xs tracking-tight text-[var(--ink-accent)]" data-aos="fade-down">
+            <div
+              className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 font-mono text-xs tracking-tight text-primary"
+              data-aos="fade-down"
+            >
               why-choose-us
             </div>
-            <h2 className="mt-4 font-[Space_Grotesk,sans-serif] text-3xl font-semibold tracking-tight sm:text-4xl" data-aos="fade-up">
+            <h2
+              className="mt-4 font-[Space_Grotesk,sans-serif] text-3xl font-semibold tracking-tight sm:text-4xl"
+              data-aos="fade-up"
+            >
               Built on principles, proven on projects
             </h2>
           </div>
@@ -216,33 +220,27 @@ export default function About() {
             {values.map(({ Icon, path, t, d }) => (
               <div
                 key={t}
-                className="rounded-2xl border border-[color-mix(in_oklch,var(--ink-foreground)_10%,transparent)] bg-[color-mix(in_oklch,var(--ink-foreground)_4%,transparent)] p-6 transition-colors duration-200 hover:border-[color-mix(in_oklch,var(--ink-accent)_40%,transparent)] hover:bg-[color-mix(in_oklch,var(--ink-foreground)_6%,transparent)]"
+                className="rounded-2xl border border-border/70 bg-card/70 p-6 transition-colors duration-200 hover:border-primary/40 hover:bg-card/90"
                 data-aos="flip-down"
               >
-                <div className="grid h-11 w-11 place-items-center rounded-lg bg-[color-mix(in_oklch,var(--ink-foreground)_10%,transparent)] text-[var(--ink-accent)]">
+                <div className="grid h-11 w-11 place-items-center rounded-lg bg-primary/10 text-primary">
                   <Icon className="h-5 w-5" />
                 </div>
-                <div className="mt-4 font-mono text-[11px] text-[color-mix(in_oklch,var(--ink-foreground)_35%,transparent)]">
+                <div className="mt-4 font-mono text-[11px] text-muted-foreground/80">
                   {path}
                 </div>
                 <h3 className="mt-1.5 font-[Space_Grotesk,sans-serif] font-semibold">
                   {t}
                 </h3>
-                <p className="mt-2 text-sm text-[color-mix(in_oklch,var(--ink-foreground)_55%,transparent)]">
-                  {d}
-                </p>
+                <p className="mt-2 text-sm text-foreground/70">{d}</p>
               </div>
             ))}
           </div>
 
           <div className="mt-14 text-center">
-            <Button
-              asChild
-              size="lg"
-              className="gradient-hero"
-            >
+            <Button asChild size="lg" className="gradient-hero">
               <Link to="/contact" className="flex items-cenetr gap-2">
-                <BriefcaseBusiness className="w-4 h-4"/>
+                <BriefcaseBusiness className="w-4 h-4" />
                 Work with us
               </Link>
             </Button>

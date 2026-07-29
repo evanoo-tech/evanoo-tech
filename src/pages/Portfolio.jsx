@@ -63,10 +63,10 @@ export default function Portfolio() {
 
       {/* ---------- HERO : theme-adaptive portfolio section ---------- */}
       <section
-        className="relative overflow-hidden bg-[var(--ink)] text-[var(--ink-foreground)]"
+        className="relative overflow-hidden bg-background text-foreground"
         style={{
           backgroundImage:
-            "radial-gradient(circle, color-mix(in oklch, var(--ink-foreground) 9%, transparent) 1px, transparent 1px)",
+            "radial-gradient(circle, color-mix(in oklch, var(--foreground) 9%, transparent) 1px, transparent 1px)",
           backgroundSize: "26px 26px",
         }}
       >
@@ -74,16 +74,10 @@ export default function Portfolio() {
 
         <div className="relative container mx-auto px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-28">
           <div
-            className="mx-auto inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-xs tracking-tight text-[var(--ink-accent)]"
-            style={{
-              borderColor:
-                "color-mix(in oklch, var(--ink-foreground) 15%, transparent)",
-              backgroundColor:
-                "color-mix(in oklch, var(--ink-foreground) 5%, transparent)",
-            }}
+            className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 font-mono text-xs tracking-tight text-primary"
             data-aos="fade-down"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--ink-accent)] animate-pulse" />
+            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             $ evanoo --portfolio --list
           </div>
 
@@ -95,28 +89,27 @@ export default function Portfolio() {
           </h1>
 
           <p
-            className="mx-auto mt-6 max-w-2xl text-md"
-            style={{
-              color:
-                "color-mix(in oklch, var(--ink-foreground) 60%, transparent)",
-            }}
+            className="mx-auto mt-6 max-w-2xl text-md text-muted-foreground"
             data-aos="fade-down"
           >
-            A peek at recent builds across food tech, cloud infrastructure,
-            and e-commerce.
+            A peek at recent builds across food tech, cloud infrastructure, and
+            e-commerce.
           </p>
         </div>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[var(--ink)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background" />
       </section>
 
       {/* ---------- PROJECTS : ambient light section ---------- */}
       <section className="relative overflow-hidden py-20 lg:py-28">
         {/* ambient gradient blobs for depth */}
-        <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-[#38BDF8]/20 blur-[110px]" />
-        <div className="pointer-events-none absolute -right-32 bottom-10 h-96 w-96 rounded-full bg-[#F5A623]/15 blur-[110px]" />
+        <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-primary/20 blur-[110px]" />
+        <div className="pointer-events-none absolute -right-32 bottom-10 h-96 w-96 rounded-full bg-accent/15 blur-[110px]" />
 
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-down">
+        <div
+          className="relative container mx-auto px-4 sm:px-6 lg:px-8"
+          data-aos="fade-down"
+        >
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((p, i) => {
               const host = hostnameOf(p.link);
@@ -125,9 +118,9 @@ export default function Portfolio() {
                   {/* gradient glow ring, revealed on hover */}
                   <div className="pointer-events-none absolute -inset-px rounded-[calc(1.5rem+1px)] bg-gradient-to-br from-[#38BDF8]/60 via-transparent to-[#F5A623]/60 opacity-0 blur-[2px] transition-opacity duration-500 group-hover:opacity-100" />
 
-                  <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card text-card-foreground shadow-[0_1px_2px_rgba(11,18,32,0.04)] backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_20px_50px_-15px_rgba(11,18,32,0.18)]">
+                  <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/80 bg-card/95 text-card-foreground shadow-[0_1px_2px_color-mix(in_oklch,var(--foreground)_8%,transparent)] backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_20px_50px_-15px_color-mix(in_oklch,var(--foreground)_18%,transparent)]">
                     {/* oversized ghost index number */}
-                    <span className="pointer-events-none absolute -right-2 -top-4 select-none font-[Space_Grotesk,sans-serif] text-7xl font-bold leading-none text-[#0B1220]/[0.04]">
+                    <span className="pointer-events-none absolute -right-2 -top-4 select-none font-[Space_Grotesk,sans-serif] text-7xl font-bold leading-none text-[color-mix(in_oklch,var(--foreground)_6%,transparent)]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
 
@@ -165,7 +158,7 @@ export default function Portfolio() {
                         </span>
                       </div>
 
-                      <h2 className="mt-3 flex flex-wrap items-center gap-2 font-[Space_Grotesk,sans-serif] text-xl font-semibold text-[#0B1220]">
+                      <h2 className="mt-3 flex flex-wrap items-center gap-2 font-[Space_Grotesk,sans-serif] text-xl font-semibold text-foreground">
                         {p.title}
                         {p.featured && (
                           <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F5A623]/15 px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-wider text-[#B9740A]">
@@ -183,7 +176,7 @@ export default function Portfolio() {
                         {p.stack.map((s) => (
                           <span
                             key={s}
-                            className="rounded-md border border-black/[0.08] bg-[#F7F7F5] px-2 py-1 font-mono text-[11px] text-[#0B1220]/70 transition-colors duration-200 group-hover:border-[#38BDF8]/30 group-hover:text-[#0B1220]"
+                            className="rounded-md border border-border/70 bg-background/70 px-2 py-1 font-mono text-[11px] text-foreground/70 transition-colors duration-200 group-hover:border-primary/40 group-hover:text-foreground"
                           >
                             {s}
                           </span>
@@ -196,7 +189,7 @@ export default function Portfolio() {
                             href={p.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group/link inline-flex items-center gap-2 text-sm font-medium text-[#0B1220] transition-colors hover:text-[#38BDF8]"
+                            className="group/link inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
                           >
                             Explore project
                             <ExternalLink className="h-4 w-4 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
@@ -219,10 +212,10 @@ export default function Portfolio() {
 
       {/* ---------- CTA : theme-adaptive bookend ---------- */}
       <section
-        className="relative overflow-hidden bg-[var(--ink)] text-[var(--ink-foreground)]"
+        className="relative overflow-hidden bg-background text-foreground"
         style={{
           backgroundImage:
-            "radial-gradient(circle, color-mix(in oklch, var(--ink-foreground) 9%, transparent) 1px, transparent 1px)",
+            "radial-gradient(circle, color-mix(in oklch, var(--foreground) 9%, transparent) 1px, transparent 1px)",
           backgroundSize: "26px 26px",
         }}
       >
@@ -250,11 +243,7 @@ export default function Portfolio() {
           </h2>
 
           <p
-            className="mx-auto mt-3 max-w-xl"
-            style={{
-              color:
-                "color-mix(in oklch, var(--ink-foreground) 60%, transparent)",
-            }}
+            className="mx-auto mt-3 max-w-xl text-muted-foreground"
             data-aos="fade-up"
           >
             Let's build something memorable together.

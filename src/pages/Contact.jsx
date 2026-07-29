@@ -27,7 +27,7 @@ export default function Contact() {
     }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.currentTarget;
@@ -61,6 +61,36 @@ export default function Contact() {
     // console.log(values); // All form values
 
     setSubmitting(true);
+    // try {
+    //   const response = await fetch(
+    //     "https://localhost:8080/evanoo/user-enquiry",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({
+    //         fullName: name,
+    //         email,
+    //         subject,
+    //         message,
+    //       }),
+    //     },
+    //   );
+
+    //   if (!response.ok) {
+    //     throw new Error("Failed to submit the enquiry.");
+    //   }
+
+    //   toast.success("Thanks! We'll get back to you within one business day.");
+    //   form.reset();
+    //   setErrors({});
+    // } catch (error) {
+    //   console.error("Enquiry submission failed:", error);
+    //   toast.error("Something went wrong. Please try again later.");
+    // } finally {
+    //   setSubmitting(false);
+    // }
 
     setTimeout(() => {
       setSubmitting(false);
@@ -81,10 +111,10 @@ export default function Contact() {
       />
       {/* ---------- HERO : theme-adaptive contact section ---------- */}
       <section
-        className="relative overflow-hidden bg-[var(--ink)] text-[var(--ink-foreground)]"
+        className="relative overflow-hidden border-y border-border/50 bg-background text-foreground"
         style={{
           backgroundImage:
-            "radial-gradient(circle, color-mix(in oklch, var(--ink-foreground) 9%, transparent) 1px, transparent 1px)",
+            "radial-gradient(circle, color-mix(in oklch, var(--foreground) 9%, transparent) 1px, transparent 1px)",
           backgroundSize: "26px 26px",
         }}
       >
@@ -92,16 +122,10 @@ export default function Contact() {
 
         <div className="relative container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-24">
           <div
-            className="mx-auto inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-xs tracking-tight text-[var(--ink-accent)]"
-            style={{
-              borderColor:
-                "color-mix(in oklch, var(--ink-foreground) 15%, transparent)",
-              backgroundColor:
-                "color-mix(in oklch, var(--ink-foreground) 5%, transparent)",
-            }}
+            className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 font-mono text-xs tracking-tight text-primary"
             data-aos="fade-down"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--ink-accent)] animate-pulse" />
+            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
             $ evanoo --contact
           </div>
 
@@ -114,11 +138,7 @@ export default function Contact() {
           </h1>
 
           <p
-            className="mx-auto mt-6 max-w-2xl text-md"
-            style={{
-              color:
-                "color-mix(in oklch, var(--ink-foreground) 60%, transparent)",
-            }}
+            className="mx-auto mt-6 max-w-2xl text-md text-muted-foreground"
             data-aos="fade-up"
           >
             Whether you need a website, mobile application, cloud hosting, SaaS
@@ -127,7 +147,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[var(--ink)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background" />
       </section>
 
       <section className="container mx-auto px-4 pb-20 sm:px-6 lg:px-8 lg:py-20">
@@ -277,9 +297,7 @@ export default function Contact() {
                       <Mail className="h-6 w-6" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">
-                        Email Us
-                      </p>
+                      <p className="text-sm text-muted-foreground">Email Us</p>
                       <h4 className="mt-1 text-lg font-semibold text-foreground transition-colors group-hover:text-primary break-all">
                         contact@evanoo.in
                       </h4>
@@ -300,9 +318,7 @@ export default function Contact() {
                       <MessageCircle className="h-6 w-6" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">
-                        WhatsApp
-                      </p>
+                      <p className="text-sm text-muted-foreground">WhatsApp</p>
                       <h4 className="mt-1 text-lg font-semibold text-foreground transition-colors group-hover:text-[#25D366]">
                         Quick Support
                       </h4>
