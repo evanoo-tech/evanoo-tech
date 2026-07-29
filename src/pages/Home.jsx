@@ -11,7 +11,11 @@ import {
   Quote,
   Star,
   FolderKanban,
-  Headset, ShieldCheck, Zap, Lock, TrendingUp
+  Headset,
+  ShieldCheck,
+  Zap,
+  Lock,
+  TrendingUp,
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 // import apnaRasoiImg from "@/assets/apnaRasoiImg.png";
@@ -111,7 +115,6 @@ const testimonials = [
 ];
 
 export default function Home() {
-
   return (
     <>
       <SEO
@@ -132,25 +135,35 @@ export default function Home() {
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" />
 
-        <div className="container mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-26" >
+        <div className="container mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-26">
           <div className="mx-auto max-w-3xl text-center animate-fade-up">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur"
-            data-aos="fade-down">
+            <span
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur"
+              data-aos="fade-down"
+            >
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
               Now taking new projects for 2026
             </span>
-            <h1 className="mt-6 font-display text-4xl font-bold tracking-tight lg:leading-19 sm:text-6xl lg:text-7xl"
-            data-aos="fade-up">
+            <h1
+              className="mt-6 font-display text-4xl font-bold tracking-tight lg:leading-19 sm:text-6xl lg:text-7xl"
+              data-aos="fade-up"
+            >
               Building <span className="gradient-text">Digital Products</span>{" "}
               That Power Modern Businesses
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-md text-muted-foreground" data-aos="fade-up">
+            <p
+              className="mx-auto mt-6 max-w-2xl text-md text-muted-foreground"
+              data-aos="fade-up"
+            >
               From websites and mobile apps to SaaS platforms, cloud hosting,
               and AI-powered solutions—Evanoo helps businesses launch, scale,
               and grow.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3" data-aos="fade-up">
+            <div
+              className="mt-10 flex flex-wrap items-center justify-center gap-3"
+              data-aos="fade-up"
+            >
               <Button
                 asChild
                 size="lg"
@@ -170,7 +183,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Overview */}
       {/* <section className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2">
@@ -232,7 +244,10 @@ export default function Home() {
         </div>
       </section> */}
 
-      <section className="container mx-auto px-4 py-20 sm:px-6 lg:px-8" data-aos="fade-up">
+      <section
+        className="container mx-auto px-4 py-20 sm:px-6 lg:px-8"
+        data-aos="fade-up"
+      >
         <div className="grid items-center gap-14 lg:grid-cols-2">
           {/* LEFT COLUMN */}
           <div>
@@ -298,7 +313,8 @@ export default function Home() {
                     desc: "Built with security first",
                   },
                 ].map(({ icon: Icon, title, desc }) => (
-                  <div data-aos="flip-left"
+                  <div
+                    data-aos="flip-left"
                     key={title}
                     className="group rounded-2xl border border-border bg-card/50 p-5 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
                   >
@@ -318,7 +334,10 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section className="relative overflow-hidden border-y border-border/40 bg-card/10" data-aos="fade-up">
+      <section
+        className="relative overflow-hidden border-y border-border/40 bg-card/10"
+        data-aos="fade-up"
+      >
         <div className="pointer-events-none absolute right-0 top-10 -z-10 h-[450px] w-[450px] rounded-full bg-orange-400 opacity-15 blur-3xl" />
         <div className="pointer-events-none absolute left-0 bottom-0 -z-10 h-[350px] w-[350px] rounded-full bg-sky-400 opacity-15 blur-3xl" />
         <div
@@ -340,7 +359,11 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-aos="flip-up" data-aos-duration="1000">
+          <div
+            className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            data-aos="flip-up"
+            data-aos-duration="1000"
+          >
             {services.map(({ Icon, title, desc, link, external }) => {
               const CardInner = (
                 <>
@@ -419,7 +442,7 @@ export default function Home() {
 
       {/* Contact CTA */}
       <div data-aos="fade-up">
-        <Cta/>
+        <Cta />
       </div>
       {/* <section className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-border gradient-hero p-10 text-center text-primary-foreground sm:p-16 shadow-elegant">
