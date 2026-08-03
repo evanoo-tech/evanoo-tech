@@ -133,12 +133,13 @@ export default function Services() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-            data-aos="fade-down"
           >
             {services.map(({ Icon, path, title, desc, points }) => (
               <article
                 key={title}
                 className="group relative flex flex-col overflow-hidden rounded-xl border border-border/80 bg-card/95 shadow-[0_1px_2px_color-mix(in_oklch,var(--foreground)_8%,transparent)] backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:border-[color-mix(in_oklch,var(--primary)_40%,transparent)] hover:shadow-[0_18px_40px_-18px_color-mix(in_oklch,var(--foreground)_18%,transparent)]"
+                data-aos="flip-up"
+                data-aos-duration="1000"
               >
                 {/* terminal-window chrome */}
                 <div className="flex items-center justify-between border-b border-border bg-card px-4 py-2.5">

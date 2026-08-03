@@ -17,7 +17,6 @@ import {
   Lock,
   TrendingUp,
 } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
 // import apnaRasoiImg from "@/assets/apnaRasoiImg.png";
 // import dashboard from "@/assets/portfolio-dashboard.jpg";
 import ecommerce from "@/assets/portfolio-ecommerce.jpg";
@@ -29,7 +28,11 @@ import saadDashboard from "@/assets/saas-dashboard.png";
 
 import Portfolio from "@/components/Portfolio";
 import Cta from "@/components/Cta";
+import HeroBackground from "@/components/HeroBackground";
 import React, { useEffect } from "react";
+
+import heroBg from "@/assets/hero-bg.jpg";
+
 
 const services = [
   {
@@ -125,17 +128,18 @@ export default function Home() {
       />
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div
+        {/* <div
           className="absolute inset-0 -z-10 opacity-50 dark:opacity-70"
           style={{
             backgroundImage: `url(${heroBg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-        />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" />
+        /> */}
+        {/* <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" /> */}
+        <HeroBackground />
 
-        <div className="container mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-26">
+        <div className="container relative z-10 mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-26">
           <div className="mx-auto max-w-3xl text-center animate-fade-up">
             <span
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur"
