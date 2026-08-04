@@ -9,9 +9,17 @@ export function LoadingScreen({ isLoading }) {
   useEffect(() => {
     if (!isLoading) {
       setFadeOut(true);
+      document.body.style.overflow = "auto";
       const timer = setTimeout(() => setVisible(false), 700);
       return () => clearTimeout(timer);
+    } else {
+      document.body.style.overflow = "hidden";
     }
+    return () => {
+      setVisible(true);
+      setFadeOut(false);
+      document.body.style.overflow = "auto";
+    };
   }, [isLoading]);
 
   if (!visible) return null;

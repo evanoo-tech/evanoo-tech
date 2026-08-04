@@ -61,44 +61,43 @@ export default function Contact() {
     // console.log(values); // All form values
 
     setSubmitting(true);
-    // try {
-    //   const response = await fetch(
-    //     "https://localhost:8080/evanoo/user-enquiry",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({
-    //         fullName: name,
-    //         email,
-    //         subject,
-    //         message,
-    //       }),
-    //     },
-    //   );
+    try {
+      const url = "https://evanoo-contact-db.onrender.com/api/contact";
+      // const url = "http://localhost:5000/api/contact";
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: values.name,
+          email: values.email,
+          subject: values.subject,
+          message: values.message,
+        }),
+      });
 
-    //   if (!response.ok) {
-    //     throw new Error("Failed to submit the enquiry.");
-    //   }
+      if (!response.ok) {
+        throw new Error("Failed to submit the enquiry.");
+      }
 
-    //   toast.success("Thanks! We'll get back to you within one business day.");
-    //   form.reset();
-    //   setErrors({});
-    // } catch (error) {
-    //   console.error("Enquiry submission failed:", error);
-    //   toast.error("Something went wrong. Please try again later.");
-    // } finally {
-    //   setSubmitting(false);
-    // }
-
-    setTimeout(() => {
-      setSubmitting(false);
+      toast.success("Thanks! We'll get back to you within one business day.");
       form.reset();
       setErrors({});
-      // toast.success("Thanks! We'll get back to you within one business day.");
-      toast.success("Thanks! We'll get back to you within one business day.");
-    }, 700);
+    } catch (error) {
+      console.error("Enquiry submission failed:", error);
+      toast.error("Something went wrong. Please try again later.");
+    } finally {
+      setSubmitting(false);
+    }
+
+    // setTimeout(() => {
+    //   setSubmitting(false);
+    //   form.reset();
+    //   setErrors({});
+    //   // toast.success("Thanks! We'll get back to you within one business day.");
+    //   toast.success("Thanks! We'll get back to you within one business day.");
+    // }, 700);
   };
 
   return (

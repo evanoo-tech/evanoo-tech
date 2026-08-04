@@ -33,7 +33,6 @@ import React, { useEffect } from "react";
 
 import heroBg from "@/assets/hero-bg.jpg";
 
-
 const services = [
   {
     Icon: Code2,
@@ -92,7 +91,8 @@ const projects = [
     desc: "Hosting platform offering shared hosting, VPS, domains, SSL certificates, and business email.",
     img: saadDashboard,
     tech: ["React", "Node.js", "Linux"],
-    link: "https://hosting.evanoo.in/",
+    // link: "https://hosting.evanoo.in/",
+    link: "",
   },
 ];
 
@@ -292,7 +292,7 @@ export default function Home() {
 
           {/* RIGHT COLUMN */}
           <div className="relative">
-            <div className="absolute -inset-6 -z-10 rounded-3xl gradient-hero opacity-20 blur-3xl" />
+            <div className="absolute max-md:-inset-y-6 max-md:-inset-x-1 -inset-6 -z-10 rounded-3xl gradient-hero opacity-20 blur-3xl" />
             <div>
               <div className="grid grid-cols-2 gap-4">
                 {[

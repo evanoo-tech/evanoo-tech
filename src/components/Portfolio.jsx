@@ -10,7 +10,7 @@ import {
   Trophy,
   LayoutGrid,
   Globe,
-  SquareArrowOutUpRight 
+  SquareArrowOutUpRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import apnaRasoi from "@/assets/apna-rasoi.png";
@@ -92,7 +92,8 @@ const projects = [
     desc: "Hosting platform offering shared hosting, VPS, domains, SSL certificates, and business email.",
     tech: ["React", "Node.js", "Linux"],
     img: saadDashboard,
-    link: "https://hosting.evanoo.in/",
+    // link: "https://hosting.evanoo.in/",
+    link: "",
   },
 ];
 
@@ -105,8 +106,6 @@ export default function Portfolio() {
     activeFilter === "All Projects"
       ? projects
       : projects.filter((p) => p.category === activeFilter);
-    console.log("projects:", projects);
-    console.log("filteredProjects:", filteredProjects);
   return (
     <section className="container mx-auto px-4 py-24 sm:px-6 lg:px-8">
       <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
@@ -241,4 +240,3 @@ export default function Portfolio() {
     </section>
   );
 }
-

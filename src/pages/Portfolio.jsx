@@ -24,7 +24,8 @@ const projects = [
     tag: "Cloud Hosting",
     desc: "Hosting platform offering shared hosting, VPS, domains, SSL certificates, and business email.",
     stack: ["React", "TypeScript", "Node.js", "ClickHouse"],
-    link: "https://hosting.evanoo.in/",
+    // link: "https://hosting.evanoo.in/",
+    link: "",
   },
   {
     img: ecommerce,
