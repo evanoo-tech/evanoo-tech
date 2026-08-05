@@ -168,7 +168,7 @@ export default function Contact() {
 
               <div className="mb-10">
                 <h2 className="inline-flex items-center gap-2 text-3xl font-bold tracking-tight">
-                  <Sparkles className="h-6 w-6 text-primary" />
+                  {/* <Sparkles className="h-6 w-6 text-primary" /> */}
                   Send us a message
                 </h2>
                 <p className="mt-3 text-muted-foreground">
