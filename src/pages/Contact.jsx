@@ -52,13 +52,13 @@ export default function Contact() {
 
     if (!values.message) {
       newErrors.message = "Message is required";
+    } else if (values.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
     }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0) return;
-
-    // console.log(values); // All form values
 
     setSubmitting(true);
     try {
@@ -76,9 +76,9 @@ export default function Contact() {
           message: values.message,
         }),
       });
-
+      const data = await response.json();
       if (!response.ok) {
-        throw new Error("Failed to submit the enquiry.");
+        throw data;
       }
 
       toast.success("Thanks! We'll get back to you within one business day.");
@@ -86,7 +86,13 @@ export default function Contact() {
       setErrors({});
     } catch (error) {
       console.error("Enquiry submission failed:", error);
-      toast.error("Something went wrong. Please try again later.");
+      let errorMessage = "";
+      if (error?.errors && Array.isArray(error?.errors)) {
+        errorMessage = error?.errors?.map((e) => e.message).join(", ");
+      } else {
+        errorMessage = error.message || "Failed to submit the enquiry.";
+      }
+      toast.error(errorMessage);
     } finally {
       setSubmitting(false);
     }

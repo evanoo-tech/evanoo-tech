@@ -39,12 +39,12 @@ export function SiteFooter() {
   };
 
   const certifications = [
-  {
-    title: "ISO/IEC 27001:2022 Certified",
-    subtitle: "Information Security Management System (ISMS)",
-    img: iSo_certified,
-  },
-];
+    {
+      title: "ISO/IEC 27001:2022 Certified",
+      subtitle: "Information Security Management System (ISMS)",
+      img: iSo_certified,
+    },
+  ];
   return (
     <footer className="border-t border-border/40 bg-primary/7">
       <FloatingSocialSidebar />
@@ -182,14 +182,14 @@ export function SiteFooter() {
           <div className="mt-2 h-1 w-5 rounded-full bg-gradient-to-r from-cyan-500 to-orange-400" />
           <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
             <li>
-              <Link to="/services" className="link-label group">
+              <Link to="#" className="link-label group">
                 <ArrowRight className="arrow-icon" />
                 <span className="text-label">Website Development</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/services" className="link-label group">
+              <Link to="#" className="link-label group">
                 <ArrowRight className="arrow-icon" />
                 <span className="text-label">Mobile App Development</span>
               </Link>
@@ -197,8 +197,9 @@ export function SiteFooter() {
 
             <li>
               <a
-                href="https://hosting.evanoo.in"
-                target="_blank"
+                // href="https://hosting.evanoo.in"
+                href="#"
+                // target="_blank"
                 rel="noopener noreferrer"
                 className="link-label group"
               >
@@ -215,14 +216,14 @@ export function SiteFooter() {
             </li>
 
             <li>
-              <Link to="/services" className="link-label group">
+              <Link to="#" className="link-label group">
                 <ArrowRight className="arrow-icon" />
                 <span className="text-label">API Integration</span>
               </Link>
             </li>
 
             <li>
-              <Link to="/services" className="link-label group">
+              <Link to="#" className="link-label group">
                 <ArrowRight className="arrow-icon" />
                 <span className="text-label">AI Solutions</span>
               </Link>
@@ -299,7 +300,11 @@ export function SiteFooter() {
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-4 rounded-2xl bg-background p-2 shadow-elegant">
                   <div className="grid h-17 w-17 place-items-center rounded-full bg-gradient-to-br from-cyan-500/15 to-orange-400/15">
                     {/* <ShieldCheck className="h-6 w-6 text-primary" /> */}
-                    <img src={iSo_certified} alt="ISO/IEC 27001:2022 Certified" className="w-full h-full" />
+                    <img
+                      src={iSo_certified}
+                      alt="ISO/IEC 27001:2022 Certified"
+                      className="w-full h-full"
+                    />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-black dark:text-foreground">
@@ -307,7 +312,6 @@ export function SiteFooter() {
                     </p>
                     <p className="text-xs text-muted-foreground">{subtitle}</p>
                   </div>
-                  
                 </div>
               </div>
             ))}
@@ -319,7 +323,7 @@ export function SiteFooter() {
         <div className="container mx-auto flex flex-col items-center justify-between gap-3 p-4 text-sm text-muted-foreground sm:flex-row sm:px-6 lg:px-8">
           <p className="text-black dark:text-muted-foreground">
             &copy; {new Date().getFullYear()}{" "}
-            <span className="gradient-text">Evanoo Technologies</span>. All
+            <span className="gradient-text">Evanoo Private Limited</span>. All
             rights reserved.
           </p>
 
