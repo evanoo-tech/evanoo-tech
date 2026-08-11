@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FloatingSocialSidebar } from "./FloatingSocialSidebar";
 import iSo_certified from "@/assets/certified.png";
+import iso_2015 from "@/assets/iso-2015.png";
+import iso_2022 from "@/assets/iso-2022.png";
 import {
   Github,
   Linkedin,
@@ -39,10 +41,20 @@ export function SiteFooter() {
   };
 
   const certifications = [
+    // {
+    //   title: "ISO/IEC 27001:2022 Certified",
+    //   subtitle: "Information Security Management System (ISMS)",
+    //   img: iSo_certified,
+    // },
     {
-      title: "ISO/IEC 27001:2022 Certified",
+      title: "ISO 9001:2015 Certified",
+      subtitle: "Quality Management System (QMS)",
+      img: iso_2015,
+    },
+    {
+      title: "ISO 27001:2022 Certified",
       subtitle: "Information Security Management System (ISMS)",
-      img: iSo_certified,
+      img: iso_2022,
     },
   ];
   return (
@@ -75,6 +87,49 @@ export function SiteFooter() {
         <span className="absolute inset-0 rounded-full bg-primary opacity-40 animate-ping" />
         <span className="absolute inset-0 rounded-full bg-primary/20 animate-pulse" />
       </button>
+
+      {/* Trusted Certificate section */}
+      <div className="border-b border-primary/15 bg-primary/5">
+        <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mb-8 flex flex-col items-center gap-2 text-center">
+            <h4 className="flex items-center gap-2 text-lg font-semibold">
+              <ShieldCheck className="h-5 w-5 text-primary" />
+              Trusted &amp; Certified
+            </h4>
+            <div className="h-1 w-5 rounded-full bg-gradient-to-r from-cyan-500 to-orange-400" />
+            <p className="max-w-md text-xs text-muted-foreground">
+              Recognized standards that back our security and quality
+              commitments.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-5">
+            {certifications.map(({ title, subtitle, img }) => (
+              <div
+                key={title}
+                className="group rounded-2xl bg-gradient-to-r from-cyan-500 via-primary to-orange-400 p-[1.5px] transition-transform duration-300 hover:-translate-y-1"
+              >
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-4 rounded-2xl bg-background p-2 shadow-elegant">
+                  <div className="grid h-17 w-17 place-items-center rounded-full bg-gradient-to-br from-cyan-500/15 to-orange-400/15 overflow-hidden transition-transform duration-300 group-hover:scale-110">
+                    {/* <ShieldCheck className="h-6 w-6 text-primary" /> */}
+                    <img
+                      src={img}
+                      alt={title}
+                      className="w-full h-full"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-black dark:text-foreground">
+                      {title}
+                    </p>
+                    <p className="text-xs text-muted-foreground">{subtitle}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       <div className="container mx-auto grid gap-12 px-4 py-16 sm:px-6 lg:grid-cols-4 lg:px-8">
         {/* Company */}
@@ -273,49 +328,6 @@ export function SiteFooter() {
               India
             </li>
           </ul>
-        </div>
-      </div>
-
-      {/* Trusted Certificate section */}
-      <div className="border-t border-primary/15 bg-primary/5">
-        <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mb-8 flex flex-col items-center gap-2 text-center">
-            <h4 className="flex items-center gap-2 text-lg font-semibold">
-              <ShieldCheck className="h-5 w-5 text-primary" />
-              Trusted &amp; Certified
-            </h4>
-            <div className="h-1 w-5 rounded-full bg-gradient-to-r from-cyan-500 to-orange-400" />
-            <p className="max-w-md text-xs text-muted-foreground">
-              Recognized standards that back our security and quality
-              commitments.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-5">
-            {certifications.map(({ title, subtitle }) => (
-              <div
-                key={title}
-                className="group rounded-2xl bg-gradient-to-r from-cyan-500 via-primary to-orange-400 p-[1.5px] transition-transform duration-300 hover:-translate-y-1"
-              >
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-4 rounded-2xl bg-background p-2 shadow-elegant">
-                  <div className="grid h-17 w-17 place-items-center rounded-full bg-gradient-to-br from-cyan-500/15 to-orange-400/15">
-                    {/* <ShieldCheck className="h-6 w-6 text-primary" /> */}
-                    <img
-                      src={iSo_certified}
-                      alt="ISO/IEC 27001:2022 Certified"
-                      className="w-full h-full"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-black dark:text-foreground">
-                      {title}
-                    </p>
-                    <p className="text-xs text-muted-foreground">{subtitle}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
