@@ -251,7 +251,7 @@ export default function Portfolio() {
           </p>
 
           <Button asChild size="lg" className="mt-8 gradient-hero">
-            <Link to="/contact">
+            <Link to="/contact?scroll=form">
               Start a project <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

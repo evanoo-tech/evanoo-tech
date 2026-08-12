@@ -38,12 +38,14 @@ const services = [
     Icon: Code2,
     title: "Website Development",
     desc: "Professional business websites, landing pages, e-commerce stores, and custom web applications.",
+    link: "/services/website-development",
   },
   {
     Icon: Cloud,
     title: "Cloud Hosting",
     desc: "Reliable shared hosting, VPS, dedicated servers, SSL certificates, domains, and business email.",
-    link: "https://hosting.evanoo.in",
+    link: "#",
+    // link: "https://hosting.evanoo.in",
     external: true,
   },
   {
@@ -173,7 +175,7 @@ export default function Home() {
                 size="lg"
                 className="gradient-hero text-primary-foreground border-0 shadow-elegant hover:opacity-90"
               >
-                <Link to="/contact">
+                <Link to="/contact?scroll=form">
                   Book Free Consultation <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

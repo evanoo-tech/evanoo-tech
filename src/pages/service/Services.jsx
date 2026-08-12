@@ -18,6 +18,7 @@ const services = [
     path: "services/web.build",
     title: "Website Development",
     desc: "Marketing sites, portals, and full-stack web apps engineered for performance, accessibility, and SEO.",
+    link: "/services/website-development",
     points: [
       "SSR & static generation",
       "Core Web Vitals tuning",
@@ -29,6 +30,7 @@ const services = [
     path: "services/mobile.native",
     title: "Mobile App Development",
     desc: "Cross-platform iOS and Android apps with native performance and beautiful UX.",
+    link: "#",
     points: [
       "React Native & Flutter",
       "Push notifications",
@@ -40,6 +42,7 @@ const services = [
     path: "services/backend.springboot",
     title: "Java Spring Boot",
     desc: "Robust backends, microservices, and enterprise APIs powered by the Spring ecosystem.",
+    link: "#",
     points: ["Microservices & REST", "JPA / Hibernate", "Security & auth"],
   },
   {
@@ -47,6 +50,7 @@ const services = [
     path: "services/frontend.react",
     title: "React Development",
     desc: "Scalable React applications with clean architecture, type-safe code, and reusable design systems.",
+    link: "#",
     points: [
       "React 19 / TanStack",
       "Design system & components",
@@ -58,6 +62,7 @@ const services = [
     path: "services/cloud.infra",
     title: "Cloud Solutions",
     desc: "Cloud-native architectures on AWS, GCP, and Azure — designed to scale and optimized for cost.",
+    link: "#",
     points: ["IaC with Terraform", "CI/CD pipelines", "Observability"],
   },
   {
@@ -65,6 +70,7 @@ const services = [
     path: "services/integrations.api",
     title: "API Integration",
     desc: "Connect your systems with payments, messaging, CRMs, and third-party APIs — built to scale.",
+    link: "#",
     points: ["Payments & messaging", "Webhooks & queues", "Auth & rate limits"],
   },
 ];
@@ -131,10 +137,8 @@ export default function Services() {
         {" "}
         {/* bg-[#F7F7F5] */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-          >
-            {services.map(({ Icon, path, title, desc, points }) => (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ Icon, path, title, desc, points, link }) => (
               <article
                 key={title}
                 className="group relative flex flex-col overflow-hidden rounded-xl border border-border/80 bg-card/95 shadow-[0_1px_2px_color-mix(in_oklch,var(--foreground)_8%,transparent)] backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:border-[color-mix(in_oklch,var(--primary)_40%,transparent)] hover:shadow-[0_18px_40px_-18px_color-mix(in_oklch,var(--foreground)_18%,transparent)]"
@@ -142,39 +146,41 @@ export default function Services() {
                 data-aos-duration="1000"
               >
                 {/* terminal-window chrome */}
-                <div className="flex items-center justify-between border-b border-border bg-card px-4 py-2.5">
-                  <div className="flex items-center gap-1.5">
-                    <span className="h-2 w-2 rounded-full bg-[#F5A623]/70" />
-                    <span className="h-2 w-2 rounded-full bg-black/25 dark:bg-white/25" />
-                    <span className="h-2 w-2 rounded-full bg-[#38BDF8]/70" />
+                <Link to={link}>
+                  <div className="flex items-center justify-between border-b border-border bg-card px-4 py-2.5">
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-[#F5A623]/70" />
+                      <span className="h-2 w-2 rounded-full bg-black/25 dark:bg-white/25" />
+                      <span className="h-2 w-2 rounded-full bg-[#38BDF8]/70" />
+                    </div>
+                    <span className="font-mono text-[11px] text-card-foreground">
+                      {path}
+                    </span>
                   </div>
-                  <span className="font-mono text-[11px] text-card-foreground">
-                    {path}
-                  </span>
-                </div>
 
-                <div className="flex flex-1 flex-col p-7">
-                  <div className="grid h-11 w-11 place-items-center rounded-lg gradient-hero text-white">
-                    <Icon className="h-5 w-5" />
+                  <div className="flex flex-1 flex-col p-7">
+                    <div className="grid h-11 w-11 place-items-center rounded-lg gradient-hero text-white">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h2 className="mt-5 font-[Space_Grotesk,sans-serif] text-lg font-semibold text-foreground">
+                      {title}
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {desc}
+                    </p>
+                    <ul className="mt-5 space-y-2 border-t border-border pt-4">
+                      {points.map((p) => (
+                        <li
+                          key={p}
+                          className="flex items-center gap-2 text-sm text-foreground/80"
+                        >
+                          <Check className="h-4 w-4 shrink-0 text-primary" />
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <h2 className="mt-5 font-[Space_Grotesk,sans-serif] text-lg font-semibold text-foreground">
-                    {title}
-                  </h2>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {desc}
-                  </p>
-                  <ul className="mt-5 space-y-2 border-t border-border pt-4">
-                    {points.map((p) => (
-                      <li
-                        key={p}
-                        className="flex items-center gap-2 text-sm text-foreground/80"
-                      >
-                        <Check className="h-4 w-4 shrink-0 text-primary" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                </Link>
               </article>
             ))}
           </div>
@@ -223,7 +229,7 @@ export default function Services() {
 
           <div className="mt-8" data-aos="fade-up">
             <Button asChild size="lg" className="gradient-hero">
-              <Link to="/contact">
+              <Link to="/contact?scroll=form">
                 Request a quote <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

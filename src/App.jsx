@@ -10,18 +10,20 @@ import { Toaster } from "sonner";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Services from "./pages/Services";
+import Services from "./pages/service/Services";
 import Hosting from "./pages/Hosting";
 import Saas from "./pages/Saas";
 import Finance from "./pages/Finance";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
+import ServiceLayout from "./pages/service/ServiceLayout";
+import WebsiteDevelopment from "./pages/service/WebsiteDevelopment";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const MIN_DISPLAY_TIME = 1800; 
+    const MIN_DISPLAY_TIME = 1800;
     const startTime = Date.now();
 
     const finishLoading = () => {
@@ -37,7 +39,7 @@ function App() {
       return () => window.removeEventListener("load", finishLoading);
     }
   }, []);
-  
+
   // AOS init — loader fully fade out
   useEffect(() => {
     if (!isLoading) {
@@ -62,7 +64,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
+            {/* <Route path="/services" element={<Services />}> */}
+            <Route path="/services" element={<ServiceLayout />}>
+              <Route path="" element={<Services />} />
+              <Route
+                path="website-development"
+                element={<WebsiteDevelopment />}
+              />
+            </Route>
             <Route path="/hosting" element={<Hosting />} />
             <Route path="/saas" element={<Saas />} />
             <Route path="/finance" element={<Finance />} />

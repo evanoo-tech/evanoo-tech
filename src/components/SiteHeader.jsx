@@ -31,7 +31,7 @@ const services = [
   {
     title: "Website Development",
     description: "Modern responsive business websites",
-    href: "#",
+    href: "/services/website-development",
     icon: Globe,
   },
   {
@@ -276,17 +276,19 @@ export function SiteHeader() {
                   to={item.href}
                   end={item.href === "/"}
                   className={({ isActive }) =>
-                    `flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground ${isActive
-                      ? "bg-secondary text-foreground"
-                      : "text-muted-foreground"
+                    `flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground ${
+                      isActive
+                        ? "bg-secondary text-foreground"
+                        : "text-muted-foreground"
                     }`
                   }
                 >
                   {({ isActive }) => (
                     <>
                       <Icon
-                        className={`h-4 w-4 ${isActive ? "text-primary" : "text-muted-foreground"
-                          }`}
+                        className={`h-4 w-4 ${
+                          isActive ? "text-primary" : "text-muted-foreground"
+                        }`}
                       />
                       {item.name}
                       {item.subItems?.length > 0 && (
@@ -323,7 +325,7 @@ export function SiteHeader() {
             size="sm"
             className="hidden lg:inline-flex gradient-hero text-primary-foreground border-0 shadow-elegant hover:opacity-90"
           >
-            <Link to="/contact">Get Started</Link>
+            <Link to="/contact?scroll=form">Get Started</Link>
           </Button>
 
           {/* Mobile Menu */}
@@ -450,9 +452,10 @@ export function SiteHeader() {
                     to={item.href}
                     end={item.href === "/"}
                     className={({ isActive }) =>
-                      `flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground ${isActive
-                        ? "bg-secondary text-foreground"
-                        : "text-muted-foreground"
+                      `flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground ${
+                        isActive
+                          ? "bg-secondary text-foreground"
+                          : "text-muted-foreground"
                       }`
                     }
                   >
@@ -460,17 +463,19 @@ export function SiteHeader() {
                       <>
                         <div className="flex items-center gap-2">
                           <Icon
-                            className={`h-4 w-4 ${isActive
-                              ? "text-primary"
-                              : "text-muted-foreground"
-                              }`}
+                            className={`h-4 w-4 ${
+                              isActive
+                                ? "text-primary"
+                                : "text-muted-foreground"
+                            }`}
                           />
                           {item.name}
                         </div>
                         {item.subItems?.length > 0 && (
                           <ChevronDown
-                            className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
-                              }`}
+                            className={`h-4 w-4 transition-transform duration-200 ${
+                              isOpen ? "rotate-180" : ""
+                            }`}
                             onClick={(e) => {
                               e.stopPropagation(); // Prevent the NavLink from being triggered
                               e.preventDefault(); // Prevent the default link behavior
@@ -482,8 +487,9 @@ export function SiteHeader() {
                     )}
                   </NavLink>
                   <div
-                    className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 opacity-100 mt-1" : "max-h-0 opacity-0"
-                      }`}
+                    className={`overflow-hidden transition-all duration-300 ${
+                      isOpen ? "max-h-96 opacity-100 mt-1" : "max-h-0 opacity-0"
+                    }`}
                   >
                     {item.subItems.map((subItem) => {
                       const SubIcon = subItem.icon;
@@ -613,9 +619,7 @@ export function SiteHeader() {
 const SubMenu = ({ item }) => {
   if (!item || item.length === 0) return null;
   return (
-    <div
-      className="absolute invisible opacity-0 left-0 top-full z-50 w-full transition-all duration-200 group-hover:visible group-hover:opacity-100"
-    >
+    <div className="absolute invisible opacity-0 left-0 top-full z-50 w-full transition-all duration-200 group-hover:visible group-hover:opacity-100">
       <div className="mx-auto max-w-7xl rounded-lg border bg-background shadow-md">
         <div className="grid grid-cols-3 gap-3 p-8">
           {item.map((subItem) => {

@@ -9,22 +9,40 @@ import {
   MessageSquare,
   Sparkles,
 } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
+import "react-international-phone/style.css";
+import { PhoneInput } from "react-international-phone";
+import { useSearchParams } from "react-router-dom";
 
 export default function Contact() {
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [phone, setPhone] = useState({
+    country: {},
+    inputValue: "",
+  });
+
+  const formSectionRef = useRef(null);
+
+  const [searchParams] = useSearchParams();
+  const scroll = searchParams.get("scroll");
 
   const clearError = (field) => {
     setErrors((prev) => ({
       ...prev,
       [field]: undefined,
     }));
+  };
+
+  const getMaxNationalDigits = (format) => {
+    if (!format) return undefined;
+
+    return (format.match(/\./g) || []).length;
   };
 
   const onSubmit = async (e) => {
@@ -36,10 +54,12 @@ export default function Contact() {
     const values = {
       name: formData.get("name")?.toString().trim() || "",
       email: formData.get("email")?.toString().trim() || "",
+      phone: {},
       subject: formData.get("subject")?.toString().trim() || "",
       message: formData.get("message")?.toString().trim() || "",
     };
 
+    const maxLen = getMaxNationalDigits(phone.country?.format);
     const newErrors = {};
 
     if (!values.name) {
@@ -48,6 +68,25 @@ export default function Contact() {
 
     if (!values.email) {
       newErrors.email = "Email is required";
+    }
+
+    // Mobile number validation
+    if (!phone.inputValue) {
+      newErrors.phone = "Mobile number is required";
+    } else {
+      // Remove spaces, brackets, hyphens, etc.
+      const digitsOnly = phone.inputValue.replace(/\D/g, "");
+      const countryCodeLength = phone?.country?.dialCode?.length ?? 0;
+      const withoutCountryCode = digitsOnly.slice(countryCodeLength);
+
+      if (withoutCountryCode?.length !== maxLen) {
+        newErrors.phone = "Please enter a valid mobile number";
+      }
+
+      values.phone = {
+        country: phone.country,
+        inputValue: withoutCountryCode,
+      };
     }
 
     if (!values.message) {
@@ -72,6 +111,7 @@ export default function Contact() {
         body: JSON.stringify({
           fullName: values.name,
           email: values.email,
+          pohone: values.phone,
           subject: values.subject,
           message: values.message,
         }),
@@ -106,10 +146,23 @@ export default function Contact() {
     // }, 700);
   };
 
+  useEffect(() => {
+    let timer;
+    if (scroll === "form") {
+      timer = setTimeout(() => {
+        formSectionRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 300);
+    }
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <SEO
-        title={"Contact Us | Evanoo Technologies"}
+        title={"Contact Us | Evanoo Private Limited"}
         description={
           "Get in touch with Evanoo for website development, mobile apps, cloud hosting, SaaS platforms, AI solutions and enterprise software."
         }
@@ -155,7 +208,10 @@ export default function Contact() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background" />
       </section>
 
-      <section className="container mx-auto px-4 pb-20 sm:px-6 lg:px-8 lg:py-20">
+      <section
+        ref={formSectionRef}
+        className="container mx-auto px-4 pb-20 sm:px-6 lg:px-8 max-lg:py-16 lg:py-20"
+      >
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 lg:grid-cols-5 lg:gap-12 items-stretch">
             {/* Form */}
@@ -222,6 +278,53 @@ export default function Contact() {
                     </p>
                   )}
                 </div>
+              </div>
+
+              <div className="mt-6 space-y-2">
+                <label
+                  htmlFor="mobileNumber"
+                  className="flex items-center gap-2 text-sm font-semibold text-foreground/90"
+                >
+                  <Phone className="h-4 w-4 text-muted-foreground" />
+                  Mobile Number
+                </label>
+
+                <PhoneInput
+                  defaultCountry="in"
+                  value={phone?.inputValue}
+                  onChange={(_, contryCode) => {
+                    setPhone(contryCode);
+                    clearError("phone");
+                  }}
+                  inputProps={{
+                    id: "mobileNumber",
+                    name: "mobileNumber",
+                    required: true,
+                    autoComplete: "tel",
+                    placeholder: "9876543210",
+                    "aria-label": "Mobile number",
+                  }}
+                  className="w-full"
+                  inputClassName={`!h-12 !w-full !rounded-md !border !bg-background/50 !text-sm !text-foreground !shadow-sm !outline-none !transition-all !rounded-tl-none !rounded-bl-none focus:!border-l-0 ${
+                    errors.mobileNumber
+                      ? "!border-red-500 !ring-1 !ring-red-500/20"
+                      : "!border-input hover:!border-primary/50 focus:!border-primary focus:!ring-2 focus:!ring-primary/20"
+                  }`}
+                  countrySelectorStyleProps={{
+                    buttonClassName:
+                      "!h-12 !rounded-l-md !rounded-r-none !border !border-input !border-r-0 !bg-background/50 !px-3 hover:!bg-muted/50",
+                    dropdownStyleProps: {
+                      className:
+                        "!z-50 !mt-1 !rounded-md !border !border-border !bg-popover !text-popover-foreground !shadow-lg",
+                    },
+                  }}
+                />
+
+                {errors.phone && (
+                  <p className="text-xs font-medium text-red-500">
+                    {errors.phone}
+                  </p>
+                )}
               </div>
 
               <div className="mt-6 space-y-2">
@@ -314,7 +417,7 @@ export default function Contact() {
 
                   {/* WhatsApp */}
                   <a
-                    href="https://wa.me/919382451949?text=Hi%20Evanoo,%20I%20want%20to%20discuss%20my%20project."
+                    href="https://wa.me/8083506050?text=Hi%20Evanoo,%20I%20want%20to%20discuss%20my%20project."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-start gap-5 transition-colors"

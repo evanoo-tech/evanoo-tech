@@ -18,6 +18,14 @@
         <priority>0.9</priority>
     </url>
 
+     <!-- Website Development Service -->
+    <url>
+        <loc>https://evanoo.in/services/website-development</loc>
+        <lastmod>2026-08-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
     <!-- Portfolio -->
     <url>
         <loc>https://evanoo.in/portfolio</loc>

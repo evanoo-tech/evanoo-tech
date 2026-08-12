@@ -112,11 +112,7 @@ export function SiteFooter() {
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 md:gap-4 rounded-2xl bg-background p-2 shadow-elegant">
                   <div className="grid h-17 w-17 place-items-center rounded-full bg-gradient-to-br from-cyan-500/15 to-orange-400/15 overflow-hidden transition-transform duration-300 group-hover:scale-110">
                     {/* <ShieldCheck className="h-6 w-6 text-primary" /> */}
-                    <img
-                      src={img}
-                      alt={title}
-                      className="w-full h-full"
-                    />
+                    <img src={img} alt={title} className="w-full h-full" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-black dark:text-foreground">
@@ -237,7 +233,10 @@ export function SiteFooter() {
           <div className="mt-2 h-1 w-5 rounded-full bg-gradient-to-r from-cyan-500 to-orange-400" />
           <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
             <li>
-              <Link to="#" className="link-label group">
+              <Link
+                to="/services/website-development"
+                className="link-label group"
+              >
                 <ArrowRight className="arrow-icon" />
                 <span className="text-label">Website Development</span>
               </Link>
@@ -303,7 +302,7 @@ export function SiteFooter() {
 
             <li>
               <a
-                href="https://wa.me/918083506050"
+                href="https://wa.me/8083506050"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-label group"

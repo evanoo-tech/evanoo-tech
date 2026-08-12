@@ -76,7 +76,13 @@ export function FloatingSocialSidebar() {
       {/* ===== Desktop / tablet (sm and up): always visible, no button ===== */}
       <div className="fixed top-1/2 right-6 z-40 hidden -translate-y-1/2 flex-col items-center gap-3 sm:flex">
         {links.map(({ Icon, href, label, hover }) => (
-          <SocialIcon key={label} Icon={Icon} href={href} label={label} hover={hover} />
+          <SocialIcon
+            key={label}
+            Icon={Icon}
+            href={href}
+            label={label}
+            hover={hover}
+          />
         ))}
       </div>
 
