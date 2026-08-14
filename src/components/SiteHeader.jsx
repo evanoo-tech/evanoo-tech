@@ -72,6 +72,7 @@ const portfolio = [
       "A home-cooked meals marketplace connecting local home chefs with customers seeking authentic, fresh food. We designed and built the consumer mobile app, chef dashboard, and ordering backend.",
     href: "https://apna-rasoi.evanoo.in/",
     icon: Utensils,
+    external: true,
   },
   {
     title: "Evanoo Hosting Platform",
@@ -79,6 +80,7 @@ const portfolio = [
       "Hosting platform offering shared hosting, VPS, domains, SSL certificates, and business email.",
     href: "#",
     icon: Server,
+    external: false,
   },
   {
     title: "Northwind Store",
@@ -86,6 +88,7 @@ const portfolio = [
       "A high-converting storefront with Stripe checkout, headless CMS, and a custom catalog. Achieved 98+ Lighthouse scores on every page.",
     href: "#",
     icon: ShoppingCart,
+    external: false,
   },
 ];
 
@@ -325,7 +328,7 @@ export function SiteHeader() {
             size="sm"
             className="hidden lg:inline-flex gradient-hero text-primary-foreground border-0 shadow-elegant hover:opacity-90"
           >
-            <Link to="/contact?scroll=form">Get Started</Link>
+            <Link to="/contact">Get Started</Link>
           </Button>
 
           {/* Mobile Menu */}
@@ -624,7 +627,29 @@ const SubMenu = ({ item }) => {
         <div className="grid grid-cols-3 gap-3 p-8">
           {item.map((subItem) => {
             const SubIcon = subItem.icon;
-            return (
+            return subItem.external ? (
+              <a
+                key={subItem.title}
+                href={subItem.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex gap-3 rounded-xl p-4 transition-all duration-200 hover:bg-secondary"
+              >
+                {SubIcon && (
+                  <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                    <SubIcon className="h-5 w-5" />
+                  </div>
+                )}
+                <div>
+                  <h4 className="text-base font-semibold text-foreground group-hover:text-primary">
+                    {subItem.title}
+                  </h4>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {subItem.description}
+                  </p>
+                </div>
+              </a>
+            ) : (
               <NavLink
                 key={subItem.title}
                 to={subItem.href}

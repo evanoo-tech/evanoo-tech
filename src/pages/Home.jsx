@@ -175,7 +175,7 @@ export default function Home() {
                 size="lg"
                 className="gradient-hero text-primary-foreground border-0 shadow-elegant hover:opacity-90"
               >
-                <Link to="/contact?scroll=form">
+                <Link to="/contact">
                   Book Free Consultation <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

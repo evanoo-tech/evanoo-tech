@@ -67,14 +67,14 @@ const WebsiteDevelopment = () => {
                             data-aos-delay="300"
                             className="mt-8 flex flex-wrap gap-3"
                         >
-                            <a
-                                href="#contact"
+                            <Link
+                                to="/contact"
                                 className="group inline-flex items-center gap-2 rounded-full gradient-surface-strong px-6 py-3 text-sm font-semibold text-brand-foreground shadow-[var(--shadow-glow)] transition-all duration-300 hover:scale-[1.03]"
                             >
                                 Get Free Consultation
 
                                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                            </a>
+                            </Link>
 
                             <a
                                 href="#pricing"
@@ -518,17 +518,17 @@ const WebsiteDevelopment = () => {
                         </p>
 
                         <div className="mt-8 flex flex-wrap justify-center gap-3">
-                            <a
-                                href="mailto:hello@evanoo.com?subject=Free%20Consultation"
+                            <Link
+                                to="/contact"
                                 className="group inline-flex items-center gap-2 rounded-full gradient-surface-strong px-6 py-3 text-sm font-semibold text-brand-foreground shadow-[var(--shadow-glow)] transition-transform hover:scale-[1.03]"
                             >
                                 Get Free Consultation
 
                                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                            </a>
+                            </Link>
 
                             <Link
-                                to="/contact?scroll=form"
+                                to="/contact"
                                 className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-6 py-3 text-sm font-semibold backdrop-blur transition-colors hover:border-primary/50 hover:bg-primary/10"
                             >
                                 <PhoneCall className="h-4 w-4 text-primary" />

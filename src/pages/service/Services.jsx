@@ -229,7 +229,7 @@ export default function Services() {
 
           <div className="mt-8" data-aos="fade-up">
             <Button asChild size="lg" className="gradient-hero">
-              <Link to="/contact?scroll=form">
+              <Link to="/contact">
                 Request a quote <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

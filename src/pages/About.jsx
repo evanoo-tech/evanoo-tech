@@ -239,10 +239,7 @@ export default function About() {
 
           <div className="mt-14 text-center">
             <Button asChild size="lg" className="gradient-hero">
-              <Link
-                to="/contact?scroll=form"
-                className="flex items-cenetr gap-2"
-              >
+              <Link to="/contact" className="flex items-cenetr gap-2">
                 <BriefcaseBusiness className="w-4 h-4" />
                 Work with us
               </Link>

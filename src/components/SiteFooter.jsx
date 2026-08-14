@@ -302,7 +302,7 @@ export function SiteFooter() {
 
             <li>
               <a
-                href="https://wa.me/8083506050"
+                href="https://wa.me/918083506050"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-label group"
