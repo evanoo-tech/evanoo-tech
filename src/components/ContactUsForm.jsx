@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
-const ContactUsForm = () => {
+const ContactUsForm = ({ popup = false, setContactModal }) => {
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [phone, setPhone] = useState();
@@ -88,7 +88,7 @@ const ContactUsForm = () => {
         body: JSON.stringify({
           fullName: values.name,
           email: values.email,
-          pohone: values.phone,
+          phone: values.phone,
           subject: values.subject,
           message: values.message,
         }),
@@ -101,6 +101,8 @@ const ContactUsForm = () => {
       toast.success("Thanks! We'll get back to you within one business day.");
       form.reset();
       setErrors({});
+      setPhone("");
+      popup && setContactModal(false);
     } catch (error) {
       console.error("Enquiry submission failed:", error);
       let errorMessage = "";
@@ -113,14 +115,6 @@ const ContactUsForm = () => {
     } finally {
       setSubmitting(false);
     }
-
-    // setTimeout(() => {
-    //   setSubmitting(false);
-    //   form.reset();
-    //   setErrors({});
-    //   // toast.success("Thanks! We'll get back to you within one business day.");
-    //   toast.success("Thanks! We'll get back to you within one business day.");
-    // }, 700);
   };
   return (
     <>

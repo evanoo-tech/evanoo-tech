@@ -197,7 +197,7 @@ export default function Contact() {
         isOpen={contactModal}
         onSkip={() => setContactModal(false)}
       >
-        <ContactUsForm />
+        <ContactUsForm popup={true} setContactModal={setContactModal} />
       </ContactUsModal>
     </>
   );
