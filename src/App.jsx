@@ -18,10 +18,12 @@ import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import ServiceLayout from "./pages/service/ServiceLayout";
 import WebsiteDevelopment from "./pages/service/WebsiteDevelopment";
+import ContactUsForm from "./components/ContactUsForm";
+import ContactUsModal from "./components/ContactUsModal";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-
+  const [contactModal, setContactModal] = useState(true);
   useEffect(() => {
     const MIN_DISPLAY_TIME = 1800;
     const startTime = Date.now();
@@ -82,6 +84,12 @@ function App() {
         <SiteFooter />
       </div>
       <Toaster richColors position="bottom-center" />
+      <ContactUsModal
+        isOpen={contactModal}
+        onSkip={() => setContactModal(false)}
+      >
+        <ContactUsForm popup={true} setContactModal={setContactModal} />
+      </ContactUsModal>
     </ThemeProvider>
   );
 }

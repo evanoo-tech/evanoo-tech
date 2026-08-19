@@ -12,11 +12,8 @@ import {
 import SEO from "@/components/SEO";
 import ContactUsForm from "../components/ContactUsForm";
 import { useEffect, useRef, useState } from "react";
-import ContactUsModal from "../components/ContactUsModal";
 
 export default function Contact() {
-  const [contactModal, setContactModal] = useState(true);
-
   const formSectionRef = useRef(null);
 
   useEffect(() => {
@@ -193,12 +190,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      <ContactUsModal
-        isOpen={contactModal}
-        onSkip={() => setContactModal(false)}
-      >
-        <ContactUsForm popup={true} setContactModal={setContactModal} />
-      </ContactUsModal>
     </>
   );
 }
