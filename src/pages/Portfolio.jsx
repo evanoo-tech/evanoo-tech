@@ -73,7 +73,7 @@ export default function Portfolio() {
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
 
-        <div className="relative container mx-auto px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-28">
+        <div className="relative container max-w-full mx-auto px-4 py-24 text-center sm:px-20 lg:py-28">
           <div
             className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 font-mono text-xs tracking-tight text-primary"
             data-aos="fade-down"
@@ -108,7 +108,7 @@ export default function Portfolio() {
         <div className="pointer-events-none absolute -right-32 bottom-10 h-96 w-96 rounded-full bg-accent/15 blur-[110px]" />
 
         <div
-          className="relative container mx-auto px-4 sm:px-6 lg:px-8"
+          className="relative container max-w-full mx-auto px-4 sm:px-20"
           data-aos="fade-down"
         >
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -222,7 +222,7 @@ export default function Portfolio() {
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
 
-        <div className="relative container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-24">
+        <div className="relative container max-w-full mx-auto px-4 py-20 text-center sm:px-20 lg:py-24">
           <div
             className="mx-auto inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-xs tracking-tight text-[var(--ink-accent)]"
             style={{

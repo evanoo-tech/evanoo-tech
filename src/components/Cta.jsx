@@ -22,8 +22,8 @@ import { Button } from "@/components/ui/button";
 
 export default function Cta() {
   return (
-    <section className="container mx-auto">
-      <div className="relative overflow-hidden gradient-bg-cta p-8 text-center shadow-elegant dark:shadow-none sm:p-14">
+    <section className="container max-w-full mx-auto">
+      <div className="relative overflow-hidden gradient-bg-cta p-8 sm:px-20 text-center shadow-elegant dark:shadow-none sm:p-14">
         {/* Ambient background glows */}
         <div className="pointer-events-none absolute -left-20 top-0 h-[350px] w-[350px] rounded-full bg-cyan-500/20 blur-[100px]" />
         <div className="pointer-events-none absolute -right-20 bottom-0 h-[350px] w-[350px] rounded-full bg-orange-500/20 blur-[100px]" />

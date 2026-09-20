@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
+import { serviceSchema } from "@/schemas";
 
 const services = [
   {
@@ -75,21 +76,15 @@ const services = [
   },
 ];
 
-// Reusable blueprint dot-grid background
-const gridBg = {
-  backgroundImage:
-    "radial-gradient(circle, rgba(255,255,255,0.09) 1px, transparent 1px)",
-  backgroundSize: "26px 26px",
-};
-
 export default function Services() {
   return (
     <>
       <SEO
-        title={"Services — Evanoo"}
+        title={"Our Services | Evanoo - Kolkata, West Bengal"}
         description={
-          "Website development, mobile apps, Java Spring Boot, React, cloud solutions, and API integration services by Evanoo."
+          "Explore Evanoo's full range of services in Kolkata including Web Development, Mobile App Development, Cloud Hosting, SaaS Solutions, API Integration, AI Solutions in Kolkata."
         }
+        schema={serviceSchema}
       />
 
       {/* ---------- HERO : theme-adaptive services section ---------- */}
@@ -103,7 +98,7 @@ export default function Services() {
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
 
-        <div className="relative container mx-auto px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-25">
+        <div className="relative container max-w-full mx-auto px-4 py-24 text-center sm:px-20 lg:py-25">
           <div
             className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 font-mono text-xs tracking-tight text-primary"
             data-aos="fade-down"
@@ -136,7 +131,7 @@ export default function Services() {
       <section className="py-20 lg:py-20">
         {" "}
         {/* bg-[#F7F7F5] */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container max-w-full mx-auto px-4 sm:px-20">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map(({ Icon, path, title, desc, points, link }) => (
               <article
@@ -198,7 +193,7 @@ export default function Services() {
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
 
-        <div className="relative container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-24">
+        <div className="relative container max-w-full mx-auto px-4 py-20 text-center sm:px-20 lg:py-24">
           <div
             className="mx-auto inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-xs tracking-tight text-[var(--ink-accent)]"
             style={{

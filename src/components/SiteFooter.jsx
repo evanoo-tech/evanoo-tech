@@ -2,7 +2,6 @@ import logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FloatingSocialSidebar } from "./FloatingSocialSidebar";
-import iSo_certified from "@/assets/certified.png";
 import iso_2015 from "@/assets/iso-2015.png";
 import iso_2022 from "@/assets/iso-2022.png";
 import {
@@ -20,7 +19,6 @@ import {
   AlarmClock,
   Flag,
   ExternalLink,
-  MessageCircle,
   ShieldCheck,
 } from "lucide-react";
 
@@ -60,17 +58,6 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border/40 bg-primary/7">
       <FloatingSocialSidebar />
-
-      {/* Floating WhatsApp */}
-      {/* <a
-        href="https://wa.me/918083506050?text=Hi%20Evanoo,%20I%20want%20to%20discuss%20my%20project."
-        target="_blank"
-        rel="noreferrer noopener"
-        aria-label="Chat on WhatsApp"
-        className="fixed bottom-32 right-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-elegant animate-float hover:scale-110 transition-transform"
-      >
-        <MessageCircle className="h-6 w-6" />
-      </a> */}
       {/* Back to Top Button */}
       <button
         onClick={scrollToTop}
@@ -90,7 +77,7 @@ export function SiteFooter() {
 
       {/* Trusted Certificate section */}
       <div className="border-b border-primary/15 bg-primary/5">
-        <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <div className="container max-w-full mx-auto px-4 py-12 sm:px-20">
           <div className="mb-8 flex flex-col items-center gap-2 text-center">
             <h4 className="flex items-center gap-2 text-lg font-semibold">
               <ShieldCheck className="h-5 w-5 text-primary" />
@@ -127,7 +114,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="container mx-auto grid gap-12 px-4 py-16 sm:px-6 lg:grid-cols-4 lg:px-8">
+      <div className="container max-w-full mx-auto grid gap-12 px-4 py-16 lg:grid-cols-4 sm:px-20">
         {/* Company */}
         <div>
           <Link
@@ -216,7 +203,7 @@ export function SiteFooter() {
             </li>
 
             <li>
-              <Link to="/careers" className="link-label group">
+              <Link to="/" className="link-label group">
                 <ArrowRight className="arrow-icon" />
                 <span className="text-label">Careers</span>
               </Link>
@@ -243,23 +230,17 @@ export function SiteFooter() {
             </li>
 
             <li>
-              <Link to="#" className="link-label group">
+              <Link to="/" className="link-label group">
                 <ArrowRight className="arrow-icon" />
                 <span className="text-label">Mobile App Development</span>
               </Link>
             </li>
 
             <li>
-              <a
-                // href="https://hosting.evanoo.in"
-                href="#"
-                // target="_blank"
-                rel="noopener noreferrer"
-                className="link-label group"
-              >
+              <Link to="/" className="link-label group">
                 <ArrowRight className="arrow-icon" />
                 <span className="text-label">Cloud Hosting</span>
-              </a>
+              </Link>
             </li>
 
             <li>
@@ -270,14 +251,14 @@ export function SiteFooter() {
             </li>
 
             <li>
-              <Link to="#" className="link-label group">
+              <Link to="/" className="link-label group">
                 <ArrowRight className="arrow-icon" />
                 <span className="text-label">API Integration</span>
               </Link>
             </li>
 
             <li>
-              <Link to="#" className="link-label group">
+              <Link to="/" className="link-label group">
                 <ArrowRight className="arrow-icon" />
                 <span className="text-label">AI Solutions</span>
               </Link>
@@ -331,7 +312,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-primary/15">
-        <div className="container mx-auto flex flex-col items-center justify-between gap-3 p-4 text-sm text-muted-foreground sm:flex-row sm:px-6 lg:px-8">
+        <div className="container max-w-full mx-auto flex flex-col items-center justify-between gap-3 p-4 sm:px-20 text-sm text-muted-foreground sm:flex-row">
           <p className="text-black dark:text-muted-foreground">
             &copy; {new Date().getFullYear()}{" "}
             <span className="gradient-text">Evanoo Private Limited</span>. All

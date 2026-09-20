@@ -6,6 +6,7 @@ interface SEOProps {
     image?: string;
     url?: string;
     keywords?: string;
+    schema?: object | object[];
 }
 
 const SITE_URL = "https://evanoo.in";
@@ -19,8 +20,14 @@ export default function SEO({
     image = DEFAULT_IMAGE,
     url = window.location.href,
     keywords,
+    schema
 }: SEOProps) {
     const fullTitle = `${title} | ${SITE_URL}`;
+    const schemas = schema
+        ? Array.isArray(schema)
+            ? schema
+            : [schema]
+        : [];
     return (
         <Helmet>
             <title>{fullTitle}</title>
@@ -61,6 +68,16 @@ export default function SEO({
             />
 
             <link rel="canonical" href={url} />
+
+            {/* JSON-LD Structured Data */}
+            {schemas.map((item, index) => (
+                <script
+                    key={index}
+                    type="application/ld+json"
+                >
+                    {JSON.stringify(item)}
+                </script>
+            ))}
         </Helmet>
     );
 }

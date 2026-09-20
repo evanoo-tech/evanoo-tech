@@ -23,22 +23,35 @@ import ContactUsModal from "./components/ContactUsModal";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [contactModal, setContactModal] = useState(true);
+  const [contactModal, setContactModal] = useState(false);
   useEffect(() => {
     const MIN_DISPLAY_TIME = 1800;
     const startTime = Date.now();
+    let loadingTimer;
+    let contactTimer;
 
     const finishLoading = () => {
       const elapsed = Date.now() - startTime;
       const remaining = Math.max(MIN_DISPLAY_TIME - elapsed, 0);
-      setTimeout(() => setIsLoading(false), remaining);
+      loadingTimer = setTimeout(() => {
+        setIsLoading(false);
+        contactTimer = setTimeout(() => {
+          document.body.style.overflow = "hidden";
+          setContactModal(true);
+        }, 2000);
+      }, remaining);
     };
 
     if (document.readyState === "complete") {
       finishLoading();
     } else {
       window.addEventListener("load", finishLoading);
-      return () => window.removeEventListener("load", finishLoading);
+      return () => {
+        window.removeEventListener("load", finishLoading);
+        clearTimeout(loadingTimer);
+        clearTimeout(contactTimer);
+        document.body.style.overflow = "unset";
+      };
     }
   }, []);
 
@@ -86,7 +99,10 @@ function App() {
       <Toaster richColors position="bottom-center" />
       <ContactUsModal
         isOpen={contactModal}
-        onSkip={() => setContactModal(false)}
+        onSkip={() => {
+          setContactModal(false);
+          document.body.style.overflow = "unset";
+        }}
       >
         <ContactUsForm popup={true} setContactModal={setContactModal} />
       </ContactUsModal>

@@ -13,9 +13,9 @@ const WebsiteDevelopment = () => {
         <>
             {/* SEO Section */}
             <SEO
-                title={"Website Development Services — Evanoo"}
+                title={"Kolkata’s #1 Web Development Services offered by Evanoo"}
                 description={
-                    "High-performance, responsive, SEO-friendly website development by Evanoo. Static sites from ₹4,999, dynamic from ₹19,999, e-commerce from ₹29,999 and custom web apps."
+                    "Custom web development services in Kolkata by Evanoo. Fast, scalable & SEO-friendly websites built for businesses across West Bengal, India."
                 }
             />
             {/* Hero Section */}
@@ -25,7 +25,7 @@ const WebsiteDevelopment = () => {
 
                 <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-accent/15 blur-[120px]" />
 
-                <div className="container mx-auto grid items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
+                <div className="container max-w-full mx-auto grid items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 sm:px-20">
                     {/* Left Content */}
                     <div>
                         {/* Badge */}
@@ -143,7 +143,7 @@ const WebsiteDevelopment = () => {
                 <div
                     data-aos="fade-up"
                     data-aos-delay="500"
-                    className="container mx-auto px-4 pb-6 text-xs text-muted-foreground sm:px-6 lg:px-8"
+                    className="container max-w-full mx-auto px-4 pb-6 text-xs text-muted-foreground sm:px-20"
                 >
                     <Link
                         to="/"
@@ -160,7 +160,7 @@ const WebsiteDevelopment = () => {
                 </div>
             </section>
             {/* Why chose Section */}
-            <section className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8" id="why-evanoo">
+            <section className="container max-w-full mx-auto px-4 py-10 sm:px-20" id="why-evanoo">
                 <div
                     data-aos="fade-up"
                     data-aos-duration="700"
@@ -200,8 +200,8 @@ const WebsiteDevelopment = () => {
                 </div>
             </section>
             {/* Packages Section */}
-            <section id="pricing" className="relative py-16 sm:py-24">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <section id="pricing" className="relative py-10">
+                <div className="container max-w-full mx-auto px-4 sm:px-20">
                     <SectionHeading
                         eyebrow="Website Packages"
                         title={
@@ -309,7 +309,7 @@ const WebsiteDevelopment = () => {
             </section>
             {/* Compare plans Section */}
             <section
-                className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8"
+                className="container max-w-full mx-auto px-4 py-10 sm:px-20"
                 id="compare"
             >
                 <SectionHeading
@@ -383,7 +383,7 @@ const WebsiteDevelopment = () => {
                 </div>
             </section>
             {/* Process Section */}
-            <section className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8" id="process">
+            <section className="container max-w-full mx-auto px-4 py-10 sm:px-20" id="process">
                 <SectionHeading
                     eyebrow="How We Work"
                     title={
@@ -436,7 +436,7 @@ const WebsiteDevelopment = () => {
                 </ol>
             </section>
             {/* Tech Stack Section */}
-            <section className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8" id="tech">
+            <section className="container max-w-full mx-auto px-4 py-10 sm:px-20" id="tech">
                 <SectionHeading
                     eyebrow="Our Stack"
                     title={
@@ -462,7 +462,7 @@ const WebsiteDevelopment = () => {
                 </ul>
             </section>
             {/* Faq Section */}
-            <section className="container mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8" id="faq">
+            <section className="container max-w-full mx-auto px-4 py-10 sm:px-6 lsm:px-20" id="faq">
                 <SectionHeading
                     eyebrow="FAQ"
                     title={
@@ -497,7 +497,7 @@ const WebsiteDevelopment = () => {
                 </div>
             </section>
             {/* Final Cta Section */}
-            <section id="contact" className="container mx-auto px-4 pb-20 pt-4 sm:px-6 lg:px-8">
+            <section id="contact" className="container max-w-full mx-auto px-4 pb-16 pt-4 sm:px-20">
                 <div
                     data-aos="fade-up"
                     data-aos-duration="800"

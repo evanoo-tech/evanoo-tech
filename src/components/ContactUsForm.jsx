@@ -6,8 +6,9 @@ import {
   Loader2,
   User,
   MessageSquare,
+  Building,
 } from "lucide-react";
-import { FormEvent, useRef, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -25,12 +26,6 @@ const ContactUsForm = ({ popup = false, setContactModal }) => {
     }));
   };
 
-  const getMaxNationalDigits = (format) => {
-    if (!format) return undefined;
-
-    return (format.match(/\./g) || []).length;
-  };
-
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -40,6 +35,7 @@ const ContactUsForm = ({ popup = false, setContactModal }) => {
     const values = {
       name: formData.get("name")?.toString().trim() || "",
       email: formData.get("email")?.toString().trim() || "",
+      company: formData.get("company")?.toString().trim() || "",
       phone: phone,
       subject: formData.get("subject")?.toString().trim() || "",
       message: formData.get("message")?.toString().trim() || "",
@@ -54,6 +50,10 @@ const ContactUsForm = ({ popup = false, setContactModal }) => {
     if (!values.email) {
       newErrors.email = "Email is required";
     }
+
+    // if (!values.company) {
+    //   newErrors.company = "Company/Organization is required";
+    // }
 
     // Mobile number validation
     if (!phone) {
@@ -88,6 +88,7 @@ const ContactUsForm = ({ popup = false, setContactModal }) => {
         body: JSON.stringify({
           fullName: values.name,
           email: values.email,
+          company: values.company,
           phone: values.phone,
           subject: values.subject,
           message: values.message,
@@ -124,7 +125,7 @@ const ContactUsForm = ({ popup = false, setContactModal }) => {
       >
         {/* Decorative gradient blur */}
         <div className="absolute -left-1/2 -top-1/2 -z-10 h-[200%] w-[200%] rounded-full bg-primary/5 blur-[120px]" />
-        <div className="mb-10 px-8 sm:px-12">
+        <div className="mb-7 px-8 sm:px-12">
           <h2 className="inline-flex items-center gap-2 text-3xl font-bold tracking-tight">
             {/* <Sparkles className="h-6 w-6 text-primary" /> */}
             Send us a message
@@ -136,22 +137,45 @@ const ContactUsForm = ({ popup = false, setContactModal }) => {
         </div>
 
         <div custom-attr="form-input" className="px-8 sm:px-12">
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2 mt-2">
             <div className="space-y-2">
-              <label
-                htmlFor="name"
-                className="flex items-center gap-2 text-sm font-semibold text-foreground/90"
-              >
-                <User className="h-4 w-4 text-muted-foreground" />
-                Full Name
-              </label>
-              <Input
-                id="name"
-                name="name"
-                placeholder="John Doe"
-                onChange={() => clearError("name")}
-                className={`h-12 bg-background/50 transition-all focus:bg-background shadow-sm ${errors.name ? "border-red-500 focus-visible:ring-red-500" : "hover:border-primary/50"}`}
-              />
+              <div className="relative">
+                <Input
+                  id="name"
+                  name="name"
+                  placeholder=" "
+                  onChange={() => clearError("name")}
+                  className={`peer h-12 bg-background/50 px-4 pt-2 transition-all focus:bg-background shadow-sm ${
+                    errors.name
+                      ? "border-red-500 focus-visible:ring-red-500"
+                      : "hover:border-primary/50"
+                  }`}
+                />
+
+                <label
+                  htmlFor="name"
+                  className={`pointer-events-none absolute left-4 top-1/2 flex -translate-y-1/2 items-center gap-2 bg-transparent px-1 text-sm font-medium text-muted-foreground transition-all duration-200
+        peer-focus:top-0
+        peer-focus:-translate-y-1/2
+        peer-focus:backdrop-blur-xl
+        peer-focus:rounded-md
+        peer-focus:px-1.5
+        peer-focus:py-0.5
+        peer-focus:bg-background/80
+        peer-focus:font-semibold
+        peer-focus:text-xs
+        peer-focus:text-primary
+        peer-placeholder-shown:top-1/2
+        peer-placeholder-shown:-translate-y-1/2
+        peer-placeholder-shown:bg-transparent
+        peer-placeholder-shown:text-sm
+        ${errors.name ? "peer-focus:text-red-500" : ""}`}
+                >
+                  <User className="h-4 w-4" />
+                  Full Name
+                </label>
+              </div>
+
               {errors.name && (
                 <p className="mt-1 text-xs font-medium text-red-500">
                   {errors.name}
@@ -160,21 +184,44 @@ const ContactUsForm = ({ popup = false, setContactModal }) => {
             </div>
 
             <div className="space-y-2">
-              <label
-                htmlFor="email"
-                className="flex items-center gap-2 text-sm font-semibold text-foreground/90"
-              >
-                <Mail className="h-4 w-4 text-muted-foreground" />
-                Email Address
-              </label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="john@company.com"
-                onInput={() => clearError("email")}
-                className={`h-12 bg-background/50 transition-all focus:bg-background shadow-sm ${errors.email ? "border-red-500 focus-visible:ring-red-500" : "hover:border-primary/50"}`}
-              />
+              <div className="relative">
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder=" "
+                  onInput={() => clearError("email")}
+                  className={`peer h-12 bg-background/50 px-4 pt-2 transition-all focus:bg-background shadow-sm ${
+                    errors.email
+                      ? "border-red-500 focus-visible:ring-red-500"
+                      : "hover:border-primary/50"
+                  }`}
+                />
+
+                <label
+                  htmlFor="email"
+                  className={`pointer-events-none absolute left-4 top-1/2 flex -translate-y-1/2 items-center gap-2 bg-transparent px-1 text-sm font-medium text-muted-foreground transition-all duration-200
+        peer-focus:top-0
+        peer-focus:-translate-y-1/2
+        peer-focus:backdrop-blur-xl
+        peer-focus:rounded-md
+        peer-focus:px-1.5
+        peer-focus:py-0.5
+        peer-focus:bg-background/80
+        peer-focus:font-semibold
+        peer-focus:text-xs
+        peer-focus:text-primary
+        peer-placeholder-shown:top-1/2
+        peer-placeholder-shown:-translate-y-1/2
+        peer-placeholder-shown:bg-transparent
+        peer-placeholder-shown:text-sm
+        ${errors.email ? "peer-focus:text-red-500" : ""}`}
+                >
+                  <Mail className="h-4 w-4" />
+                  Email Address
+                </label>
+              </div>
+
               {errors.email && (
                 <p className="mt-1 text-xs font-medium text-red-500">
                   {errors.email}
@@ -182,18 +229,54 @@ const ContactUsForm = ({ popup = false, setContactModal }) => {
               )}
             </div>
           </div>
+          <div className="mt-4 space-y-2">
+            <div className="relative">
+              <Input
+                id="company"
+                name="company"
+                placeholder=" "
+                onChange={() => clearError("company")}
+                className={`peer h-12 bg-background/50 px-4 pt-2 transition-all focus:bg-background shadow-sm ${
+                  errors.company
+                    ? "border-red-500 focus-visible:ring-red-500"
+                    : "hover:border-primary/50"
+                }`}
+              />
 
-          <div className="mt-6 space-y-2">
-            <label
-              htmlFor="mobileNumber"
-              className="flex items-center gap-2 text-sm font-semibold text-foreground/90"
-            >
-              <Phone className="h-4 w-4 text-muted-foreground" />
-              Mobile Number
-            </label>
+              <label
+                htmlFor="company"
+                className={`pointer-events-none absolute left-4 top-1/2 flex -translate-y-1/2 items-center gap-2 bg-transparent px-1 text-sm font-medium text-muted-foreground transition-all duration-200
+        peer-focus:top-0
+        peer-focus:-translate-y-1/2
+        peer-focus:backdrop-blur-xl
+        peer-focus:rounded-md
+        peer-focus:px-1.5
+        peer-focus:py-0.5
+        peer-focus:bg-background/80
+        peer-focus:font-semibold
+        peer-focus:text-xs
+        peer-focus:text-primary
+        peer-placeholder-shown:top-1/2
+        peer-placeholder-shown:-translate-y-1/2
+        peer-placeholder-shown:bg-transparent
+        peer-placeholder-shown:text-sm
+        ${errors.company ? "peer-focus:text-red-500" : ""}`}
+              >
+                <Building className="h-4 w-4" />
+                Company/Organization
+              </label>
+            </div>
 
+            {errors.company && (
+              <p className="mt-1 text-xs font-medium text-red-500">
+                {errors.company}
+              </p>
+            )}
+          </div>
+
+          <div className="mt-4 space-y-2 relative">
             <div
-              className={`flex h-12 w-full rounded-md border bg-background/50 shadow-sm transition-all focus-within:bg-background focus-within:ring-1 ${
+              className={`relative flex h-12 w-full rounded-md border bg-background/50 shadow-sm transition-all focus-within:bg-background focus-within:ring-1 ${
                 errors.phone
                   ? "border-red-500 focus-within:ring-red-500"
                   : "border-input hover:border-primary/50 focus-within:border-ring focus-within:ring-ring"
@@ -201,24 +284,55 @@ const ContactUsForm = ({ popup = false, setContactModal }) => {
             >
               {/* Country Code Prefix */}
               <div className="flex items-center border-r border-border bg-muted/40 px-3 text-sm font-medium text-muted-foreground rounded-l-md select-none">
-                <span>+91</span>
+                +91
               </div>
 
-              {/* Phone Input */}
+              {/* Input must come BEFORE label for peer-* */}
               <input
                 id="mobileNumber"
                 name="mobileNumber"
                 type="tel"
                 inputMode="numeric"
-                placeholder="9876543210"
+                placeholder=" "
                 value={phone}
                 onChange={(e) => {
                   const val = e.target.value.replace(/\D/g, "").slice(0, 10);
                   setPhone(val);
                   clearError("phone");
                 }}
-                className="flex-1 bg-transparent px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                className="peer flex-1 bg-transparent px-3 py-2 text-sm focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
               />
+
+              {/* Floating Label */}
+              <label
+                htmlFor="mobileNumber"
+                className={`
+        pointer-events-none absolute left-16 top-1/2
+        -translate-y-1/2
+        bg-transparent px-1
+        text-sm font-medium text-muted-foreground
+        transition-all duration-200
+        peer-focus:-top-2.5
+        peer-focus:left-4
+        peer-focus:translate-y-0
+        peer-focus:rounded-md
+        peer-focus:bg-background
+        peer-focus:px-1.5
+        peer-focus:py-0.5
+        peer-focus:text-xs
+        peer-focus:font-semibold
+        peer-placeholder-shown:top-1/2
+        peer-placeholder-shown:-translate-y-1/2
+        peer-placeholder-shown:bg-transparent
+        peer-placeholder-shown:text-sm
+        ${errors.phone ? "peer-focus:text-red-500" : "peer-focus:text-primary"}
+      `}
+              >
+                <span className="flex items-center gap-2">
+                  <Phone className="h-4 w-4" />
+                  Mobile Number
+                </span>
+              </label>
             </div>
 
             {errors.phone && (
@@ -228,38 +342,99 @@ const ContactUsForm = ({ popup = false, setContactModal }) => {
             )}
           </div>
 
-          <div className="mt-6 space-y-2">
-            <label
-              htmlFor="subject"
-              className="flex items-center gap-2 text-sm font-semibold text-foreground/90"
-            >
-              <MessageSquare className="h-4 w-4 text-muted-foreground" />
-              Subject
-            </label>
-            <Input
-              id="subject"
-              name="subject"
-              placeholder="How can we help you?"
-              className="h-12 bg-background/50 transition-all focus:bg-background shadow-sm hover:border-primary/50"
-            />
+          <div className="mt-4 space-y-2">
+            <div className="relative">
+              <Input
+                id="subject"
+                name="subject"
+                placeholder=" "
+                className="peer h-12 bg-background/50 px-4 pt-2 transition-all focus:bg-background shadow-sm hover:border-primary/50"
+              />
+
+              <label
+                htmlFor="subject"
+                className="pointer-events-none absolute left-4 top-1/2 flex -translate-y-1/2 items-center gap-2 bg-transparent px-1 text-sm font-medium text-muted-foreground transition-all duration-200
+        peer-focus:top-0
+        peer-focus:-translate-y-1/2
+        peer-focus:backdrop-blur-xl
+        peer-focus:rounded-md
+        peer-focus:px-1.5
+        peer-focus:py-0.5
+        peer-focus:bg-background/80
+        peer-focus:font-semibold
+        peer-focus:text-xs
+        peer-focus:text-primary
+        peer-placeholder-shown:top-1/2
+        peer-placeholder-shown:-translate-y-1/2
+        peer-placeholder-shown:bg-transparent
+        peer-placeholder-shown:text-sm"
+              >
+                <MessageSquare className="h-4 w-4" />
+                Subject
+              </label>
+            </div>
           </div>
 
-          <div className="mt-6 space-y-2">
-            <label
-              htmlFor="message"
-              className="flex items-center gap-2 text-sm font-semibold text-foreground/90"
-            >
-              <MessageCircle className="h-4 w-4 text-muted-foreground" />
-              Message
-            </label>
-            <Textarea
-              id="message"
-              name="message"
-              rows={6}
-              placeholder="Tell us about your project, goals, and timeline..."
-              onChange={() => clearError("message")}
-              className={`resize-none bg-background/50 p-4 transition-all focus:bg-background shadow-sm ${errors.message ? "border-red-500 focus-visible:ring-red-500" : "hover:border-primary/50"}`}
-            />
+          <div className="mt-4 space-y-2">
+            <div className="relative">
+              <Textarea
+                id="message"
+                name="message"
+                rows={1}
+                placeholder=" "
+                onChange={() => clearError("message")}
+                className={`peer resize-none bg-background/50 p-4 pt-4 transition-all focus:bg-background shadow-sm ${
+                  errors.message
+                    ? "border-red-500 focus-visible:ring-red-500"
+                    : "hover:border-primary/50"
+                }`}
+                onInput={(e) => {
+                  const textarea = e.currentTarget;
+
+                  // Reset height so shrinking also works
+                  textarea.style.height = "auto";
+
+                  // Calculate 4-row maximum
+                  const lineHeight = parseInt(
+                    window.getComputedStyle(textarea).lineHeight,
+                  );
+                  const maxHeight = lineHeight * 6;
+
+                  textarea.style.height = `${Math.min(
+                    textarea.scrollHeight,
+                    maxHeight,
+                  )}px`;
+
+                  // Show scrollbar only after 4 rows
+                  textarea.style.overflowY =
+                    textarea.scrollHeight > maxHeight ? "auto" : "hidden";
+                }}
+              />
+
+              <label
+                htmlFor="message"
+                className={`pointer-events-none absolute left-4 top-4 flex items-center gap-2 bg-transparent px-1 text-sm font-medium text-muted-foreground transition-all duration-200
+        peer-focus:top-0
+        peer-focus:-translate-y-1/2
+        peer-focus:backdrop-blur-xl
+        peer-focus:rounded-md
+        peer-focus:px-1.5
+        peer-focus:py-0.5
+        peer-focus:bg-background/80
+        peer-focus:font-semibold
+        peer-focus:text-xs
+        peer-focus:text-primary
+        peer-placeholder-shown:top-4
+        peer-placeholder-shown:translate-y-0
+        peer-placeholder-shown:bg-transparent
+        peer-placeholder-shown:text-sm
+        ${errors.message ? "peer-focus:text-red-500" : ""}`}
+              >
+                <MessageCircle className="h-4 w-4" />
+                Message
+              </label>
+            </div>
+
             {errors.message && (
               <p className="mt-1 text-xs font-medium text-red-500">
                 {errors.message}

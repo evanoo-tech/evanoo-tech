@@ -74,7 +74,7 @@ export default function Saas() {
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
 
-        <div className="relative container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
+        <div className="relative container max-w-full mx-auto px-4 py-20 text-center sm:px-20 lg:py-28">
           <div
             className="mx-auto inline-flex items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-xs tracking-tight text-[var(--ink-accent)]"
             style={{
@@ -94,9 +94,7 @@ export default function Saas() {
             data-aos="fade-up"
           >
             Software that{" "}
-            <span className="block gradient-text">
-              runs your business
-            </span>
+            <span className="block gradient-text">runs your business</span>
           </h1>
 
           <p
@@ -115,8 +113,11 @@ export default function Saas() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[var(--ink)]" />
       </section>
 
-      <section className="container mx-auto px-4 pb-20 sm:px-6 lg:px-8 lg:py-20">
-        <div className="grid gap-6 md:grid-cols-4" data-aos="fade-up">
+      <section className="container max-w-full mx-auto px-4 pb-20 sm:px-20 lg:py-20 max-lg:py-10">
+        <div
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+          data-aos="fade-up"
+        >
           {products.map(({ Icon, title, tag, desc, features }) => (
             <article
               key={title}

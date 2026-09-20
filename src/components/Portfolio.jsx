@@ -4,10 +4,6 @@ import {
   UtensilsCrossed,
   Briefcase,
   Cloud,
-  Layers,
-  Smile,
-  Rocket,
-  Trophy,
   LayoutGrid,
   Globe,
   SquareArrowOutUpRight,
@@ -33,33 +29,6 @@ const categories = [
   {
     label: "Cloud Services",
     icon: Cloud,
-  },
-];
-
-const stats = [
-  {
-    icon: Layers,
-    value: "35+",
-    label: "Projects Completed",
-    tint: "bg-indigo-100 text-indigo-600",
-  },
-  {
-    icon: Smile,
-    value: "25+",
-    label: "Happy Clients",
-    tint: "bg-emerald-100 text-emerald-600",
-  },
-  {
-    icon: Rocket,
-    value: "5+",
-    label: "Years Experience",
-    tint: "bg-amber-100 text-amber-600",
-  },
-  {
-    icon: Trophy,
-    value: "98%",
-    label: "Client Satisfaction",
-    tint: "bg-blue-100 text-blue-600",
   },
 ];
 
@@ -107,7 +76,7 @@ export default function Portfolio() {
       ? projects
       : projects.filter((p) => p.category === activeFilter);
   return (
-    <section className="container mx-auto px-4 py-24 sm:px-6 lg:px-8">
+    <section className="container max-w-full mx-auto px-4 py-24 sm:px-20">
       <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
@@ -216,23 +185,6 @@ export default function Portfolio() {
                   </span>
                 ))}
               </div>
-
-              {/* <div className="mt-8">
-                {project.link ? (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-3"
-                  >
-                    Explore Project <ArrowRight className="h-4 w-4" />
-                  </a>
-                ) : (
-                  <div className="inline-flex cursor-default items-center gap-2 text-sm font-semibold text-primary">
-                    Coming soon <ArrowRight className="h-4 w-4" />
-                  </div>
-                )}
-              </div> */}
             </div>
           </article>
         ))}

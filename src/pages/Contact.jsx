@@ -1,17 +1,8 @@
-import {
-  Mail,
-  MessageCircle,
-  MapPin,
-  Phone,
-  Send,
-  Loader2,
-  User,
-  MessageSquare,
-  Sparkles,
-} from "lucide-react";
+import { Mail, MessageCircle, MapPin, Phone } from "lucide-react";
 import SEO from "@/components/SEO";
 import ContactUsForm from "../components/ContactUsForm";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { professionalServiceSchema } from "@/schemas";
 
 export default function Contact() {
   const formSectionRef = useRef(null);
@@ -30,10 +21,11 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title={"Contact Us | Evanoo Private Limited"}
+        title={"Contact Evanoo | Kolkata, West Bengal, India"}
         description={
-          "Get in touch with Evanoo for website development, mobile apps, cloud hosting, SaaS platforms, AI solutions and enterprise software."
+          "Get in touch with Evanoo for [service] enquiries in Kolkata. Call, email or visit us — we respond within 24 hours. Request a free quote now."
         }
+        schema={professionalServiceSchema}
       />
       {/* ---------- HERO : theme-adaptive contact section ---------- */}
       <section
@@ -46,7 +38,7 @@ export default function Contact() {
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
 
-        <div className="relative container mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-24">
+        <div className="relative container max-w-full mx-auto px-4 py-20 text-center sm:px-20 lg:py-24">
           <div
             className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 font-mono text-xs tracking-tight text-primary"
             data-aos="fade-down"
@@ -78,7 +70,7 @@ export default function Contact() {
 
       <section
         ref={formSectionRef}
-        className="container mx-auto px-4 pb-20 sm:px-6 lg:px-8 max-lg:py-16 lg:py-20"
+        className="container max-w-full mx-auto px-4 pb-20 sm:px-20 max-lg:py-16 lg:py-20"
       >
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 lg:grid-cols-5 lg:gap-12 items-stretch">

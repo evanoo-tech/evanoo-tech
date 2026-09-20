@@ -56,9 +56,9 @@ export default function About() {
   return (
     <>
       <SEO
-        title={"About — Evanoo"}
+        title={"About | IT & Software Services Company in Kolkata, WB- India"}
         description={
-          "Learn about Evanoo — one platform bringing together hosting, digital services, SaaS products, and financial solutions for businesses."
+          "Learn about Evanoo, a Kolkata-based IT & Software company delivering Services on time, Meet our team and our mission."
         }
       />
 
@@ -73,7 +73,7 @@ export default function About() {
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
 
-        <div className="relative container mx-auto px-4 py-24 text-center sm:px-6 lg:px-8 lg:py-25">
+        <div className="relative container max-w-full mx-auto px-4 py-24 text-center sm:px-20 lg:py-25">
           <div
             className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 font-mono text-xs tracking-tight text-primary"
             data-aos="fade-down"
@@ -104,7 +104,7 @@ export default function About() {
 
       {/* ---------- STORY + MISSION/VISION : light paper section ---------- */}
       <section className="py-20 lg:py-25">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container max-w-full mx-auto px-4 sm:px-20">
           <div className="grid gap-6 lg:grid-cols-2">
             {/* story card */}
             <div
@@ -200,7 +200,7 @@ export default function About() {
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklch,var(--ink-foreground)_20%,transparent)] to-transparent" />
 
-        <div className="relative container mx-auto px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <div className="relative container max-w-full mx-auto px-4 py-20 sm:px-20 lg:py-28">
           <div className="mx-auto max-w-2xl text-center">
             <div
               className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 font-mono text-xs tracking-tight text-primary"

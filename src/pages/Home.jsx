@@ -5,11 +5,8 @@ import {
   Cloud,
   Layers,
   Palette,
-  Wrench,
   Plug,
   Boxes,
-  Quote,
-  Star,
   FolderKanban,
   Headset,
   ShieldCheck,
@@ -17,21 +14,16 @@ import {
   Lock,
   TrendingUp,
 } from "lucide-react";
-// import apnaRasoiImg from "@/assets/apnaRasoiImg.png";
-// import dashboard from "@/assets/portfolio-dashboard.jpg";
-import ecommerce from "@/assets/portfolio-ecommerce.jpg";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
-import apnaRasoi from "@/assets/apna-rasoi.png";
-import eCommerce from "@/assets/e-commerce.png";
-import saadDashboard from "@/assets/saas-dashboard.png";
-
 import Portfolio from "@/components/Portfolio";
 import Cta from "@/components/Cta";
 import HeroBackground from "@/components/HeroBackground";
-import React, { useEffect } from "react";
-
-import heroBg from "@/assets/hero-bg.jpg";
+import {
+  organizationSchema,
+  professionalServiceSchema,
+  websiteSchema,
+} from "@/schemas";
 
 const services = [
   {
@@ -69,64 +61,15 @@ const services = [
     desc: "AI chatbots, workflow automation, virtual assistants, and intelligent business solutions.",
   },
 ];
-
-const projects = [
-  {
-    title: "Apna Rasoi",
-    tag: "FOOD DELIVERY",
-    desc: "Cloud kitchen platform with online ordering, menu management, WhatsApp ordering, and responsive design.",
-    img: apnaRasoi,
-    tech: ["React", "Spring Boot", "PostgreSQL"],
-    link: "https://apna-rasoi.evanoo.in",
-  },
-  {
-    title: "Insurance Management Platform",
-    tag: "ENTERPRISE SOFTWARE",
-    desc: "Insurance platform with quotation, policy management, API integration, and claims workflow.",
-    img: eCommerce,
-    tech: ["Java", "Spring Boot", "REST API"],
-    link: "",
-  },
-  {
-    title: "Evanoo Hosting Platform",
-    tag: "CLOUD HOSTING",
-    desc: "Hosting platform offering shared hosting, VPS, domains, SSL certificates, and business email.",
-    img: saadDashboard,
-    tech: ["React", "Node.js", "Linux"],
-    // link: "https://hosting.evanoo.in/",
-    link: "",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "Evanoo turned our idea into a polished product in weeks. Outstanding craft and communication.",
-    name: "Priya Sharma",
-    role: "Founder, NestCart",
-  },
-  {
-    quote:
-      "Their Spring Boot team rebuilt our API and cut response times by 60%. Highly recommended.",
-    name: "Daniel Okafor",
-    role: "CTO, LedgerOne",
-  },
-  {
-    quote:
-      "The UI/UX work elevated our brand. Conversion is up across the board.",
-    name: "Meera Iyer",
-    role: "Head of Product, BrightFin",
-  },
-];
-
 export default function Home() {
   return (
     <>
       <SEO
-        title={"Evanoo — Hosting, Digital Services, SaaS & Finance"}
+        title={"Kolkata’s #1 IT & Software Services offered by Evanoo India"}
         description={
-          "Evanoo is one platform for hosting, digital services, SaaS products, and financial solutions — web & mobile development, cloud, CRM, loans, and credit cards."
+          "Evanoo Offers Web Development, Mobile App Development, Cloud Hosting, SaaS Solutions, API Integration, AI Solutions in Kolkata, WB.Get a free consultation today."
         }
+        schema={[organizationSchema, professionalServiceSchema, websiteSchema]}
       />
       {/* Hero */}
       <section className="relative overflow-hidden">
@@ -141,7 +84,7 @@ export default function Home() {
         {/* <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/70 to-background" /> */}
         <HeroBackground />
 
-        <div className="container relative z-10 mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-26">
+        <div className="container max-w-full relative z-10 mx-auto px-4 py-24 sm:px-20 lg:py-26">
           <div className="mx-auto max-w-3xl text-center animate-fade-up">
             <span
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur"
@@ -189,69 +132,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* Overview */}
-      {/* <section className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wider text-primary pb-2">
-              WHY EVANOO
-            </p>
-            <div class="w-10 h-1 rounded-full gradient-hero mt-1 mb-4"></div>
-            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-              Building Technology That Helps<br/>
-              <span className="bg-gradient-to-r from-cyan-500 via-sky-500 to-orange-400 bg-clip-text text-transparent">
-                Businesses Grow
-              </span>
-            </h2>
-            <p className="mt-5 text-muted-foreground">
-              Evanoo helps startups, entrepreneurs, and growing businesses build
-              modern digital solutions. From websites and mobile apps to cloud
-              hosting, SaaS platforms, AI automation, and custom software—we
-              provide everything needed to launch, scale, and succeed.{" "}
-            </p>
-            <div className="mt-8 grid grid-cols-3 gap-6">
-              {[
-                { n: "10+", l: "Projects shipped" },
-                { n: "100%", l: "Client-Focused" },
-                { n: "24/7", l: "Support" },
-              ].map((s) => (
-                <div key={s.l}>
-                  <div className="text-3xl font-bold gradient-text">{s.n}</div>
-                  <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
-                    {s.l}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-6 -z-10 rounded-3xl gradient-hero opacity-20 blur-3xl" />
-            <div className="rounded-3xl border border-border bg-card p-8 shadow-elegant">
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  "24/7 Support",
-                  "99.9% Uptime",
-                  "Fast Delivery",
-                  "Secure Solutions",
-                ].map((p, i) => (
-                  <div
-                    key={p}
-                    className="rounded-2xl border border-border bg-background p-5"
-                  >
-                    <div className="text-xs text-muted-foreground">
-                      0{i + 1}
-                    </div>
-                    <div className="mt-1 font-semibold">{p}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       <section
-        className="container mx-auto px-4 py-20 sm:px-6 lg:px-8"
+        className="container max-w-full mx-auto px-4 py-20 sm:px-20"
         data-aos="fade-up"
       >
         <div className="grid items-center gap-14 lg:grid-cols-2">
@@ -354,7 +237,7 @@ export default function Home() {
             backgroundSize: "36px 36px",
           }}
         />
-        <div className="container relative mx-auto px-4 py-20 sm:px-6 lg:px-8">
+        <div className="container  max-w-full relative mx-auto px-4 py-20 sm:px-20">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-wider text-primary">
               What we do
@@ -417,73 +300,10 @@ export default function Home() {
         <Portfolio />
       </div>
 
-      {/* Testimonials */}
-      {/* <section className="border-y border-border/40 bg-card/30">
-        <div className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-primary">Testimonials</p>
-            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Trusted by founders & teams</h2>
-          </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <figure key={t.name} className="rounded-2xl border border-border bg-card p-7">
-                <Quote className="h-6 w-6 text-primary" />
-                <blockquote className="mt-4 text-sm leading-relaxed">"{t.quote}"</blockquote>
-                <figcaption className="mt-6 flex items-center justify-between border-t border-border pt-4">
-                  <div>
-                    <div className="text-sm font-semibold">{t.name}</div>
-                    <div className="text-xs text-muted-foreground">{t.role}</div>
-                  </div>
-                  <div className="flex gap-0.5 text-accent">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-3.5 w-3.5 fill-current" />
-                    ))}
-                  </div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
       {/* Contact CTA */}
       <div data-aos="fade-up">
         <Cta />
       </div>
-      {/* <section className="container mx-auto px-4 py-20 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl border border-border gradient-hero p-10 text-center text-primary-foreground sm:p-16 shadow-elegant">
-          <Wrench className="mx-auto h-10 w-10 opacity-80" />
-          <h2 className="mt-5 text-3xl font-bold sm:text-4xl">
-            Let's Build Something Amazing Together
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl opacity-90">
-            Whether you need a website, mobile app, cloud hosting, custom
-            software, or AI-powered solutions, our team is ready to help.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              asChild
-              size="lg"
-              className="gradient-hero border-0 text-primary-foreground shadow-elegant hover:opacity-90"
-            >
-              <Link to="/contact">
-                Book Free Consultation
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-
-            <Button asChild size="lg" variant="secondary">
-              <a
-                href="https://wa.me/918083506050"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp Us
-              </a>
-            </Button>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 }
