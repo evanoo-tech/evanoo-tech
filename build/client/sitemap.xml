@@ -1,0 +1,37 @@
+```xml
+        <?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://www.evanoo.in/</loc>
+    </url>
+
+    <url>
+        <loc>https://www.evanoo.in/about</loc>
+    </url>
+
+    <url>
+        <loc>https://www.evanoo.in/services</loc>
+    </url>
+
+    <url>
+        <loc>https://www.evanoo.in/hosting</loc>
+    </url>
+
+    <url>
+        <loc>https://www.evanoo.in/saas</loc>
+    </url>
+
+    <url>
+        <loc>https://www.evanoo.in/finance</loc>
+    </url>
+
+    <url>
+        <loc>https://www.evanoo.in/portfolio</loc>
+    </url>
+
+    <url>
+        <loc>https://www.evanoo.in/contact</loc>
+    </url>
+
+</urlset>

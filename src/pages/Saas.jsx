@@ -8,6 +8,7 @@ import {
   Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const products = [
   {
@@ -63,6 +64,11 @@ const products = [
 export default function Saas() {
   return (
     <>
+      <SEO
+          title="SaaS Products & Business Software"
+          description="Discover Evanoo SaaS solutions for business management, automation, finance and digital operations. Simplify your business with smart software."
+          keywords="SaaS products, business software, business automation, cloud software, Evanoo"
+      />
       {/* ---------- HERO : theme-adaptive saas products section ---------- */}
       <section
         className="relative overflow-hidden bg-[var(--ink)] text-[var(--ink-foreground)]"

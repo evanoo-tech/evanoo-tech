@@ -1,5 +1,6 @@
 
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 
 interface SEOProps {
     title: string;
@@ -22,13 +23,13 @@ export default function SEO({
                             }: SEOProps) {
 
     // Exclude query parameters and URL fragments
-    const canonicalUrl =
-        url ||
-        `${SITE_URL}${typeof window !== "undefined"
-            ? window.location.pathname
-            : ""}`;
+    const { pathname } = useLocation();
 
-    const fullTitle = `${title} | Evanoo`;
+    const canonicalUrl = url || `${SITE_URL}${pathname}`;
+
+    const fullTitle = title.includes("Evanoo")
+        ? title
+        : `${title} | Evanoo`;
 
     return (
         <Helmet>

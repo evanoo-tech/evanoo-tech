@@ -10,6 +10,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const offerings = [
   {
@@ -91,6 +92,11 @@ const plans = [
 export default function Hosting() {
   return (
     <>
+      <SEO
+          title="Web Hosting Services"
+          description="Explore reliable shared hosting, VPS hosting, reseller hosting, domain registration, SSL certificates and business email solutions from Evanoo."
+          keywords="web hosting, shared hosting, VPS hosting, reseller hosting, domain registration, SSL certificates, Evanoo"
+      />
       {/* ---------- HERO : theme-adaptive hosting section ---------- */}
       <section
         className="relative overflow-hidden bg-[var(--ink)] text-[var(--ink-foreground)]"

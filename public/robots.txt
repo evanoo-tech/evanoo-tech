@@ -1,5 +1,4 @@
 User-agent: *
-
 Allow: /
 
-Sitemap: https://evanoo.in/sitemap.xml
+Sitemap: https://www.evanoo.in/sitemap.xml
