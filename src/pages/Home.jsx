@@ -121,10 +121,8 @@ export default function Home() {
   return (
     <>
       <SEO
-        title={"Evanoo — Hosting, Digital Services, SaaS & Finance"}
-        description={
-          "Evanoo is one platform for hosting, digital services, SaaS products, and financial solutions — web & mobile development, cloud, CRM, loans, and credit cards."
-        }
+          title="Evanoo | Website Development, Software & Cloud Solutions"
+          description="Evanoo provides website and mobile app development, custom software, Java Spring Boot solutions, cloud hosting, API integration and business automation services."
       />
       {/* Hero */}
       <section className="relative overflow-hidden">
